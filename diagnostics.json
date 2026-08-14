@@ -1,0 +1,117 @@
+Full diagnostic: {
+    "sent_at_utc": "2026-08-13T08:20:18.421Z",
+    "sent_at_market_time": "2026-08-13 11:20:18,421 Europe/Bucharest",
+    "response_received_at_utc": "2026-08-13T08:20:18.981Z",
+    "response_received_at_market_time": "2026-08-13 11:20:18,981 Europe/Bucharest",
+    "method": "POST",
+    "url": "https://marketplace-api.emag.ro/api-3/awb/save",
+    "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": "Basic [REDACTED]"
+    },
+    "request_body": {
+        "data": [
+            {
+                "order_id": "499449209",
+                "sender": {
+                    "name": "Ten Atex",
+                    "contact": "eMAG Ten Atex",
+                    "phone1": "+359877461444",
+                    "address_id": "356002"
+                },
+                "receiver": {
+                    "name": "Marian Strimbei",
+                    "contact": "Marian Strimbei",
+                    "phone1": "0775526390",
+                    "phone2": "0775526390",
+                    "legal_entity": 0,
+                    "locality_id": 107,
+                    "street": "Strada 1 Decembrie 194 (Joya Residence) Vila 3, apt. 6",
+                    "zipcode": "77180"
+                },
+                "awb_format": "A6",
+                "pickup_request": 1,
+                "is_oversize": 0,
+                "insured_value": 0,
+                "weight": 0.7,
+                "envelope_number": 0,
+                "parcel_number": 1,
+                "cod": 0,
+                "courier_account_id": 306245,
+                "pickup_and_return": 0,
+                "saturday_delivery": 0,
+                "sameday_delivery": 0,
+                "dropoff_locker": 0,
+                "unboxing": 0,
+                "currency": "RON",
+                "packages": [
+                    {
+                        "weight": 0.7,
+                        "length": 26,
+                        "width": 33,
+                        "height": 5
+                    }
+                ]
+            }
+        ]
+    },
+    "http_status": 200,
+    "response_body": {
+        "isError": true,
+        "messages": [
+            "ERROR: Order id doesn't exist."
+        ],
+        "errors": [],
+        "results": [
+            {
+                "0": {
+                    "order_id": "499449209",
+                    "sender": {
+                        "name": "Ten Atex",
+                        "contact": "eMAG Ten Atex",
+                        "phone1": "+359877461444",
+                        "address_id": "356002"
+                    },
+                    "receiver": {
+                        "name": "Marian Strimbei",
+                        "contact": "Marian Strimbei",
+                        "phone1": "0775526390",
+                        "phone2": "0775526390",
+                        "legal_entity": 0,
+                        "locality_id": 107,
+                        "street": "Strada 1 Decembrie 194 (Joya Residence) Vila 3, apt. 6",
+                        "zipcode": "77180"
+                    },
+                    "awb_format": "A6",
+                    "pickup_request": 1,
+                    "is_oversize": 0,
+                    "insured_value": 0,
+                    "weight": 0.7,
+                    "envelope_number": 0,
+                    "parcel_number": 1,
+                    "cod": 0,
+                    "courier_account_id": 306245,
+                    "pickup_and_return": 0,
+                    "saturday_delivery": 0,
+                    "sameday_delivery": 0,
+                    "dropoff_locker": 0,
+                    "unboxing": 0,
+                    "currency": "RON",
+                    "packages": [
+                        {
+                            "weight": 0.7,
+                            "length": 26,
+                            "width": 33,
+                            "height": 5
+                        }
+                    ]
+                },
+                "sender": {
+                    "contact": "eMAG Ten Atex",
+                    "email": "tenatex64@emag.ro"
+                }
+            }
+        ]
+    }
+}
