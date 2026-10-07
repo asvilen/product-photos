@@ -1,0 +1,57 @@
+{
+  "id": "rosa",
+  "root": "rosa",
+  "title": "ROSA",
+  "subtitle": "Tablecloth Collection",
+  "bpm": 110,
+  "music": { "piece": "nachtmusik", "seed": 7 },
+  "designs": [
+    { "dir": "florentina", "name": "Florentina", "tagline": "Delicate pastel wildflowers", "accent": "#a0616f", "lens": "closeup-1" },
+    { "dir": "marina-blue", "name": "Marina Blue", "tagline": "Coastal blue patchwork", "lens": "closeup-1" },
+    { "dir": "terracotta-garden", "name": "Terracotta Garden", "tagline": "Warm, painterly peonies", "lens": "closeup-1" },
+    { "dir": "country-check", "name": "Country Check", "tagline": "Timeless farmhouse check" },
+    { "dir": "magnolia", "name": "Magnolia", "tagline": "Pink blossoms on soft grey" },
+    { "dir": "mocha-mosaic", "name": "Mocha Mosaic", "tagline": "Earthy modern patchwork" }
+  ],
+  "patterns": [
+    "terracotta-garden/closeup-1", "marina-blue/closeup-1", "magnolia/closeup-2",
+    "country-check/closeup-2", "mocha-mosaic/closeup-2", "florentina/closeup-1"
+  ],
+  "scenes": [
+    {
+      "type": "hook", "beats": 4,
+      "words": [
+        { "text": "Dress", "image": "terracotta-garden/closeup-1" },
+        { "text": "up", "image": "magnolia/closeup-2" },
+        { "text": "your", "image": "marina-blue/closeup-1" },
+        { "text": "table", "image": "country-check/closeup-2" }
+      ]
+    },
+    { "type": "title", "beats": 8, "tagline": "Six designs · Made in Bulgaria" },
+    { "type": "designs", "beatsEach": 8 },
+    {
+      "type": "care", "beats": 8, "accentFrom": "marina-blue", "eyebrow": "Easy care",
+      "items": [
+        { "icon": "wash", "big": "30°", "text": "Machine washable" },
+        { "icon": "stain", "text": "Stain resistant", "sub": "& easy to clean" },
+        { "icon": "dry", "text": "Quick drying" },
+        { "icon": "iron", "text": "Easy to iron" }
+      ]
+    },
+    { "type": "build", "beats": 4, "words": ["Find", "your", "size"] },
+    {
+      "type": "sizes", "beats": 8, "heading": "4 shapes · 6 sizes",
+      "shapes": [
+        { "name": "Rectangle", "image": "country-check/shape__rectangle", "sizes": [[100, 150], [130, 150], [140, 180], [150, 220]] },
+        { "name": "Oval", "image": "magnolia/shape__oval", "sizes": [[100, 150], [130, 150], [140, 180], [150, 220]] },
+        { "name": "Square", "image": "marina-blue/shape__square", "sizes": [[150, 150]] },
+        { "name": "Round", "image": "terracotta-garden/shape__round", "sizes": [[150]] }
+      ]
+    },
+    {
+      "type": "origin", "beats": 4, "image": "country-check/natural-setting", "heading": "Made in\nBulgaria",
+      "points": ["European craftsmanship", "Locally made", "Reliable quality"]
+    },
+    { "type": "outro", "beats": 12, "tagline": "6 designs · 4 shapes · 6 sizes", "footer": "Made in Bulgaria" }
+  ]
+}
