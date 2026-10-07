@@ -63,9 +63,9 @@ These are required by this recipe. The current PIM already recognizes ten of the
 
 ### 07 · Above view — `__above-view.png`
 
-- **Scene:** Natural dining setting viewed from directly above or at a slight elevated angle. Center the tablecloth and make it the clear centerpiece of the square frame. A restrained arrangement of plates, food, or flowers may establish real use, while leaving large areas of the print visible. The camera angle is flexible; choose the angle that best shows this product and the table's shape.
+- **Scene:** Natural dining setting photographed from exactly straight above. Center the tablecloth's tabletop surface as the clear subject. The cloth is larger than the rectangular table and its excess fabric drops vertically over every table edge, entirely below the visible top plane. From this camera position, no hanging panel or scalloped hem is visible. A few restrained plates or flowers may establish real use while leaving most of the pattern unobstructed.
 - **Text:** None.
-- **Check:** The image is distinct from the hero and everyday setting. The cloth dominates and its real pattern is readable. A directly overhead shot cannot show a hanging edge; an angled shot may show one if the perspective supports it.
+- **Check:** Camera is truly vertical, with no perspective tilt. No scalloped perimeter appears flat around the tabletop. The source full-view photo controls pattern scale: its major repeat has approximately three blocks across and five down over the entire cloth, so do not enlarge the blocks into a few giant fields. The visible tabletop section retains that small motif scale and the original color and divider order.
 
 ### 08 · Edge and fabric — `__closeup-1.png`
 
@@ -146,10 +146,10 @@ Packaging and retail-label images are outside this two-photo recipe. Add such a 
 ## Pilot run card: ROSA Autumn Patchwork (`ROS-AP`)
 
 - **Output folder:** `rosa/autumn-patchwork/`.
-- **Inputs:** one actual full-pattern photograph and one actual close-up. Once committed under `sources/`, pass both exact paths to every agent. Do not substitute a generated image for an original.
+- **Inputs for this run:** `rosa/autumn-patchwork/00-fullview.jpg`, `00-closeup-left.jpg`, and `00-closeup-right.jpg`. Pass the full view and both close-ups to every image agent; do not substitute a generated image for an original. These `00-*` files are interim source names in the product folder. Move them under `sources/` after the PIM scanner excludes that directory, before importing this product's repository images into the PIM.
 - **PIM facts checked 2026-10-07:** ROSA; 100% polyester; 140 g/m²; scallop-cut edge; made in Bulgaria; manufacturer Sitex OOD. Active shapes: rectangle, oval, round, square. Rectangle and oval sizes: 100 × 150, 130 × 150, 140 × 180, 150 × 220 cm. Square: 150 × 150 cm. Round: Ø150 cm.
 - **Visual lock:** One continuous tablecloth with repeated square fields separated by narrow dark-and-light ornamental bands. Warm ochre/orange, muted rose, taupe/gray, burgundy, and dark plum fields carry leaves and large flowers. Preserve their order, relative scale, texture, and the scalloped outer edge. The patchwork-like design is a print, not separately sewn squares.
-- **First pilot outputs:** `ROS-AP__main.png`, `ROS-AP__above-view.png`, and `ROS-AP__closeup-1.png`. Review these for realism and print fidelity before generating the remaining set.
+- **Review gates:** Compare `__main`, `__above-view`, and `__closeup-1` to the originals before completing the set. For `__above-view`, verify a truly vertical camera, no visible hanging hem, and small source-scale repeat. Review every selected image before publishing; a generated print may remain an approximation even when its scene is photorealistic.
 
 ### Copyable one-agent assignment
 
