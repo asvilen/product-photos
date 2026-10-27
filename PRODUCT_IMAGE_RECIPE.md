@@ -1,166 +1,533 @@
-# Product image recipe and master shot list
+# Product image recipes
+<!-- recipe-version: 9 -->
 
-This is the editable source of truth for producing product images from actual tablecloth photographs. Use one image agent per numbered output. The product photographs establish what the cloth looks like; the PIM establishes product facts, active shapes, sizes, and approved care information. Existing catalog images are composition references only.
+This is the editable master shot list. Sitex PIM reads each `shot-json` block directly. Recipes are captured when a run starts. Generation code lives in `sitex-pim`; this repository contains source photographs, accepted photographs and recipes. The existing `video/` project is outside this workflow.
 
-**Set size:** 11 required product images and 7 numbered detail images for a product with four active shapes, or 18 generated product files in total. The collection size guide is a separate shared asset. Generate only the shape files for shapes active in the PIM.
+## Workflow
 
-## File naming and inputs
+Upload one full view and one closeup in the product's PIM Media page. Enter the photographed cloth's horizontal and vertical physical dimensions in centimetres, as displayed, and select the horizontal or vertical fabric-width direction. The full view must include the entire cloth and all edges.
 
-- Product output: `<collection-slug>/<product-slug>/<PRODUCT-CODE>__<slot>.png`. For the pilot, the folder is `rosa/autumn-patchwork/`, so `__above-view` becomes `rosa/autumn-patchwork/ROS-AP__above-view.png`.
-- Numbered details use `__others_01` through `__others_07`. Keep each number tied to the purpose defined below when starting a new product. Existing products may use different numbers; do not rename or overwrite them without review.
-- Preferred originals: `sources/<collection-slug>/<product-slug>/<PRODUCT-CODE>__source__full-pattern.jpg` and `...__closeup.jpg`. Preserve the originals unchanged. The PIM currently scans image files recursively and would report these `__source__` names as unknown slots, so its repository scan must exclude `sources/` before this folder convention is adopted.
-- The coordinator supplies every agent with both original photos, current PIM facts, a product-specific visual description, **one** numbered assignment below, and its exact destination path.
+Choose Generate all, an image category or individual shots. PIM opens one ordinary Chat conversation per shot in the Eshop project, with Work off, the latest available model and High reasoning. Upload both originals at the start of each shot's conversation. Include the full product facts, photographed dimensions, source-image roles and that shot's recipe in every request. Treat the original photographs as the source of truth for the product; do not use earlier generated images as product references. Request one finished image at a time and wait for its original download before starting the next shot. Review the selected batch when it finishes. Retries, resume and regeneration continue in that shot's own conversation with the user's feedback. Each image links to its own chat; the batch link opens the latest chat. An older run's pending request keeps its saved conversation to prevent duplicate submissions; other shots without a dedicated chat start fresh with both originals. If ChatGPT explicitly reports that earlier originals are unavailable and requests them again, PIM reattaches the saved full view and closeup to the recovery request in that same conversation. One automatic source refresh is allowed per image retry budget; a repeated missing-source error pauses for review.
 
-## Shared quality rules
+All shots, including closeups, complete information cards and compliance images with English label text, are generated through ChatGPT. Card wording, typography and layout can vary creatively while retaining the information and visual purpose specified here. Product claims must agree with the supplied PIM facts. For care cards without label instructions, present conservative material-specific advice as general guidance rather than manufacturer-confirmed instructions. Compliance labels contain only supplied product facts; do not invent care symbols, manufacturer addresses, certifications or barcodes, or copy another pattern's label data.
 
-1. Make professional, photorealistic product photography with plausible perspective, gravity, fabric folds, shadows, and material texture. Square, opaque PNG output, at least 1024 × 1024 pixels. Keep the intended cloth or detail inside the frame.
-2. Preserve the real print: repeat geometry, motif order, colors, scale, ornamental bands, and edge shape. Do not invent quilting seams or rearrange a pattern to fit the scene. The two originals outrank example images.
-3. A camera directly above the table shows its top surface. A hanging edge is visible only when the camera angle makes that physically possible.
-4. `__main`, `__natural-setting`, `__above-view`, all `__shape__*`, and both `__closeup-*` images have **no text**. `__easy-care` and `__made-in-bulgaria` may have short, verified text. The detail rows specify their own copy limits.
-5. Generate the photograph first. When a row permits words, numbers, arrows, or icons, add and inspect them in a controlled finishing step. Never trust generated lettering, symbols, labels, or barcodes without verification.
-6. Inspect each candidate beside both originals at full view and close view. Check print, color, edge, shape, drape, text, and filename. Retry a failed detail before saving. If the sources cannot support an accurate result, report the limitation instead of publishing a changed product.
-7. Each agent saves only its assigned selected file and reports the path and checks. The coordinator verifies file format, dimensions, unique filename, PIM matching, and visual fidelity before publishing the set.
+The originals establish the actual product: preserve its print, colour relationships, motif proportions, textile character and edge construction. Source dimensions establish pattern scale. Use natural regular dining tables and believable drape. Do not specify a numeric drop or prescribe table dimensions. Do not turn printed patchwork into sewn panels.
 
-## Required product images
+Generate each output as one opaque square image, at the highest available quality and at least 1024 pixels per side. The main image includes a small, legible "Ships from EU" sticker when supported by the supplied shipping information, with no other text. Natural-setting, above-view, shapes and closeups contain no text. All information cards contain legible English information. Generate only the product's active PIM shapes and compliance variant keys. Four active shapes give 18 standard files, plus two shared compliance files and one package file per distinct compliance key. For ROSA's four rectangle/oval sizes, round and square, this gives 26 files in total. Collection size guides are separate.
 
-These are required by this recipe. The current PIM already recognizes ten of them. `__above-view` is new: add it as a required PRODUCT/CAROUSEL media-template slot in the PIM before importing its image. Until then, the PIM repository validator will call that suffix an unknown slot. The PIM's eMAG image export also has a fixed slot list; add this view there separately if it should appear in eMAG galleries.
+Composition reference paths below are examples for human comparison; they do not establish this product's fabric or facts and are not uploaded automatically.
+
+## Files
+
+Accepted images use `<collection>/<product>/<CODE>__<slot>.png`. Compliance uses `__compliance__packaging.png`, `__compliance__label.png` and `__compliance__<key>.png`. Rectangle and oval share their dimension key, such as `140180`; round uses `round` and square uses `square`, matching PIM's Temu compliance resolver. Reuse the existing product folder; create a folder only when needed. New originals are preserved unchanged under the product's `sources/<run-id>/` directory. PIM excludes source originals from final-media matching.
+
+Keep all drafts, downloads, attempt history, measurements and run metadata outside this repository, in PIM's ignored local workflow storage. Accept saves the chosen attempt. Existing images require an explicit overwrite confirmation. Generation never stages, commits, pushes or publishes files. Originals already registered for existing products remain unchanged.
+
+## Master shots
 
 ### 01 · Hero — `__main.png`
 
-- **Scene:** Inviting, naturally lit dining room. A rectangular tablecloth occupies most of the frame. Show the tabletop repeat and substantial front/side drape with few simple props. Three-quarter camera view, around seated eye level or slightly higher.
-- **Text:** None.
-- **Check:** At thumbnail size this reads as a tablecloth and as the exact product, with believable scale and scalloped edge.
+```shot-json
+{
+  "slot": "main",
+  "title": "Hero",
+  "method": "photo",
+  "references": [
+    "rosa/country-check/ROS-CC__main.png"
+  ],
+  "composition": "Natural daylight dining room, elevated three-quarter camera, tabletop plus natural front/side drape, restrained props. Add a small, tasteful sticker graphic in the upper-right corner with the exact, legible wording 'Ships from EU', provided the supplied shipping information confirms dispatch from an EU country. Keep the sticker inset from the image edges and clear of the product's pattern and perimeter. No other text. Use a regular dining table and preserve the original pattern scale.",
+  "requiredContent": [
+    "Exact motif order and source field proportions at a believable pattern scale",
+    "Believable fabric, scalloped cut edge and gravity",
+    "Small, legible 'Ships from EU' corner sticker for products confirmed to ship from the EU"
+  ],
+  "reject": [
+    "Enlarged or stretched pattern fields",
+    "Changed weave, colors, edge or false quilting seams",
+    "Props hide the product",
+    "Missing, unreadable, oversized or cropped shipping sticker when EU dispatch is confirmed",
+    "Sticker obscures the product or claims EU dispatch unsupported by supplied shipping information"
+  ]
+}
+```
 
 ### 02 · Rectangle shape — `__shape__rectangle.png`
 
-- **Scene:** Bright neutral studio or minimal room. Show the entire rectangular cloth on a rectangular table, centered, with straight sides, four corners, and front/side drape. No props. Elevated three-quarter angle.
-- **Text:** None; no size label.
-- **Check:** Clearly rectangular outline, correct print scale, and plausible edge.
+```shot-json
+{
+  "slot": "shape__rectangle",
+  "title": "Rectangle shape",
+  "method": "photo",
+  "references": [
+    "rosa/country-check/ROS-CC__shape__rectangle.png"
+  ],
+  "composition": "Pure white studio background. Entire rectangle cloth on concealed support of the same shape. Elevated three-quarter camera. Match light, framing and scale across series. No legs, furniture, props or text.",
+  "requiredContent": [
+    "Recognizable silhouette and full perimeter",
+    "Source-scale repeat; cuts alter counts, never stretch motifs",
+    "Soft shadow and plausible drape"
+  ],
+  "reject": [
+    "Visible legs/support or room background",
+    "Ambiguous silhouette or cropped perimeter",
+    "Changed print geometry"
+  ]
+}
+```
 
 ### 03 · Oval shape — `__shape__oval.png`
 
-- **Scene:** Match the rectangle shape image's light, camera height, and background. Show a smooth oval cloth on an oval table, entire curved outline and natural drape visible. No props.
-- **Text:** None; no size label.
-- **Check:** Curve and scallop are continuous. The printed repeat is not bent or stretched into arcs.
+```shot-json
+{
+  "slot": "shape__oval",
+  "title": "Oval shape",
+  "method": "photo",
+  "references": [
+    "rosa/country-check/ROS-CC__shape__oval.png"
+  ],
+  "composition": "Pure white studio background. Entire oval cloth on concealed support of the same shape. Elevated three-quarter camera. Match light, framing and scale across series. No legs, furniture, props or text.",
+  "requiredContent": [
+    "Recognizable silhouette and full perimeter",
+    "Source-scale repeat; cuts alter counts, never stretch motifs",
+    "Soft shadow and plausible drape"
+  ],
+  "reject": [
+    "Visible legs/support or room background",
+    "Ambiguous silhouette or cropped perimeter",
+    "Changed print geometry"
+  ]
+}
+```
 
 ### 04 · Round shape — `__shape__round.png`
 
-- **Scene:** Same visual series on a round table. Show the circular tabletop and full cloth outline with even, gravity-led drape. No props.
-- **Text:** None; no diameter label.
-- **Check:** Both table and cloth read as round; the internal pattern retains its normal scale.
+```shot-json
+{
+  "slot": "shape__round",
+  "title": "Round shape",
+  "method": "photo",
+  "references": [
+    "rosa/country-check/ROS-CC__shape__round.png"
+  ],
+  "composition": "Pure white studio background. Entire round cloth on concealed support of the same shape. Elevated three-quarter camera. Match light, framing and scale across series. No legs, furniture, props or text.",
+  "requiredContent": [
+    "Recognizable silhouette and full perimeter",
+    "Source-scale repeat; cuts alter counts, never stretch motifs",
+    "Soft shadow and plausible drape"
+  ],
+  "reject": [
+    "Visible legs/support or room background",
+    "Ambiguous silhouette or cropped perimeter",
+    "Changed print geometry"
+  ]
+}
+```
 
 ### 05 · Square shape — `__shape__square.png`
 
-- **Scene:** Same visual series on a square table. Show the full square outline, four corners, and side drape. No props.
-- **Text:** None; no size label.
-- **Check:** The shape of the whole cloth is clear and distinct from any square fields within its print.
+```shot-json
+{
+  "slot": "shape__square",
+  "title": "Square shape",
+  "method": "photo",
+  "references": [
+    "rosa/country-check/ROS-CC__shape__square.png"
+  ],
+  "composition": "Pure white studio background. Entire square cloth on concealed support of the same shape. Elevated three-quarter camera. Match light, framing and scale across series. No legs, furniture, props or text.",
+  "requiredContent": [
+    "Recognizable silhouette and full perimeter",
+    "Source-scale repeat; cuts alter counts, never stretch motifs",
+    "Soft shadow and plausible drape"
+  ],
+  "reject": [
+    "Visible legs/support or room background",
+    "Ambiguous silhouette or cropped perimeter",
+    "Changed print geometry"
+  ]
+}
+```
 
 ### 06 · Everyday setting — `__natural-setting.png`
 
-- **Scene:** A second believable dining photograph, distinct from the hero: modest meal, warm natural light, some room context. Angled camera shows pattern on the table and a hanging edge. Keep props sparse.
-- **Text:** None.
-- **Check:** Lived-in setting, cloth still the main subject, substantial unobstructed print.
+```shot-json
+{
+  "slot": "natural-setting",
+  "title": "Everyday setting",
+  "method": "photo",
+  "references": [
+    "rosa/terracotta-garden/ROS-TG__natural-setting.png"
+  ],
+  "composition": "Distinct natural dining scene with warm daylight and sparse tableware; keep most pattern unobstructed. No text.",
+  "requiredContent": [
+    "Tabletop and hanging fabric visible",
+    "Scene differs from hero"
+  ],
+  "reject": [
+    "Wrong scale or color",
+    "Synthetic folds and scallops"
+  ]
+}
+```
 
-### 07 · Above view — `__above-view.png`
+### 07 · Straight above — `__above-view.png`
 
-- **Scene:** Natural dining setting photographed from exactly straight above. Center the tablecloth's tabletop surface as the clear subject. The cloth is larger than the rectangular table and its excess fabric drops vertically over every table edge, entirely below the visible top plane. From this camera position, no hanging panel or scalloped hem is visible. A few restrained plates or flowers may establish real use while leaving most of the pattern unobstructed.
-- **Text:** None.
-- **Check:** Camera is truly vertical, with no perspective tilt. No scalloped perimeter appears flat around the tabletop. The source full-view photo controls pattern scale: its major repeat has approximately three blocks across and five down over the entire cloth, so do not enlarge the blocks into a few giant fields. The visible tabletop section retains that small motif scale and the original color and divider order.
+```shot-json
+{
+  "slot": "above-view",
+  "title": "Straight above",
+  "method": "photo",
+  "references": [
+    "rosa/autumn-patchwork/ROS-AP__above-view.png"
+  ],
+  "composition": "Exactly vertical camera above a regular dining table in a natural setting. Show only physically visible fabric: hanging cloth below the tabletop plane must not appear flattened onto the tabletop. No text.",
+  "requiredContent": [
+    "Source pattern scale and proportions",
+    "Cloth is central subject"
+  ],
+  "reject": [
+    "Flat scalloped perimeter around tabletop",
+    "Hanging hem visible despite vertical camera",
+    "Enlarged motifs"
+  ]
+}
+```
 
-### 08 · Edge and fabric — `__closeup-1.png`
+### 08 · Actual edge and fabric — `__closeup-1.png`
 
-- **Scene:** Tight natural close-up of the actual scalloped hem, textile texture, and adjacent motif. A refined edit of the real close-up photo is preferable if it is most faithful.
-- **Text:** None.
-- **Check:** Hem contour, texture, color, and print match the source.
+```shot-json
+{
+  "slot": "closeup-1",
+  "title": "Actual edge and fabric",
+  "method": "photo",
+  "references": [
+    "rosa/terracotta-garden/ROS-TG__closeup-1.png",
+    "rosa/terracotta-garden/ROS-TG__closeup-2.png"
+  ],
+  "composition": "Professional closeup of the actual product showing its perimeter, textile texture and adjoining motif, faithfully following the supplied closeup original. No text.",
+  "requiredContent": [
+    "Faithful original fabric, print and edge construction",
+    "Enough context to identify the product"
+  ],
+  "reject": [
+    "Invented trim, seams or texture",
+    "Different fabric or pattern",
+    "Unclear or blurred detail"
+  ]
+}
+```
 
-### 09 · Pattern structure — `__closeup-2.png`
+### 09 · Actual pattern structure — `__closeup-2.png`
 
-- **Scene:** Close view broad enough to show adjoining fields and their ornamental divider. Include contrasting light/warm and darker floral areas. A gentle fold may show fabric thickness.
-- **Text:** None.
-- **Check:** Divider is continuous; fields stay aligned; folds do not duplicate or scramble motifs.
+```shot-json
+{
+  "slot": "closeup-2",
+  "title": "Actual pattern structure",
+  "method": "photo",
+  "references": [
+    "rosa/terracotta-garden/ROS-TG__closeup-1.png"
+  ],
+  "composition": "Professional detail photograph showing the product's observed motif arrangement and adjoining printed fields. Follow the real full view and closeup. For a grid print show a divider or field transition. No text.",
+  "requiredContent": [
+    "Exact observed print geometry and motif order",
+    "Real fine textile detail"
+  ],
+  "reject": [
+    "Changed geometry or motif order",
+    "Invented trim or false seams",
+    "Unclear or blurred detail"
+  ]
+}
+```
 
-### 10 · Easy care — `__easy-care.png`
+### 10 · Care infographic — `__easy-care.png`
 
-- **Scene:** Professional fabric or table photograph with restrained space for care information.
-- **Text:** Short verified copy only. The current PIM media instruction specifies machine washing at 30°C; confirm this instruction for each collection before using it. Do not add other care or performance claims without a verified source.
-- **Check:** Every word, number, and symbol is legible and matches approved care data.
+```shot-json
+{
+  "slot": "easy-care",
+  "title": "Care infographic",
+  "method": "infographic",
+  "references": [
+    "pastel/01-coffee-lecce/PAS-CL__easy-care.png"
+  ],
+  "composition": "Large product photograph, fabric-detail inset and substantial care icon rail. Create legible English care guidance with a clear visual hierarchy. Keep depicted actions consistent with the wording.",
+  "requiredContent": [
+    "Useful care information consistent with supplied material facts",
+    "Distinguish general material guidance from verified manufacturer instructions"
+  ],
+  "reject": [
+    "Sparse information, weak hierarchy or misalignment",
+    "Unreadable or clipped text",
+    "Unsupported claims or altered fabric detail"
+  ]
+}
+```
 
-### 11 · Origin — `__made-in-bulgaria.png`
+### 11 · Origin infographic — `__made-in-bulgaria.png`
 
-- **Scene:** Elegant product photograph emphasizing the actual cloth, with a small, clean space for origin information.
-- **Text:** “Made in Bulgaria” when confirmed by PIM. Manufacturer and material facts may be added only when PIM confirms them.
-- **Check:** Origin and any numbers or names are exact; the image remains a credible product photograph.
-
-## Numbered detail images
-
-These use the PIM's optional repeatable `others` slot. Slots `01`–`06` standardize themes visible in [Terracotta Garden](rosa/terracotta-garden/) and [Mocha Mosaic](rosa/mocha-mosaic/). `07` provides a direct pattern view like those used for other products. These are image-type references, not proof of Autumn Patchwork's care, packaging, or material properties.
+```shot-json
+{
+  "slot": "made-in-bulgaria",
+  "title": "Origin infographic",
+  "method": "infographic",
+  "references": [
+    "pastel/01-coffee-lecce/PAS-CL__made-in-bulgaria.png"
+  ],
+  "composition": "Product photograph and faithful fabric inset beside an English origin headline and positive fact groups. Show a Bulgarian flag and Bulgarian origin claim only when the supplied PIM origin is Bulgaria.",
+  "requiredContent": [
+    "Origin, manufacturer, material and finish",
+    "No unsupported comparisons with imports"
+  ],
+  "reject": [
+    "Sparse information, weak hierarchy or misalignment",
+    "Unreadable or clipped text",
+    "Unsupported claims or altered fabric detail"
+  ]
+}
+```
 
 ### 12 · Material and finish — `__others_01.png`
 
-- **Scene:** Airy editorial layout with a three-quarter dining photograph and a true-to-source macro inset of fabric and finished edge.
-- **Text:** Optional exact PIM facts such as composition, fabric weight, and edge. No unsupported stain, drying, ironing, durability, or color-retention claim.
-- **Check:** The macro shows this product's actual motif and edge; text matches PIM.
+```shot-json
+{
+  "slot": "others_01",
+  "title": "Material and finish",
+  "method": "infographic",
+  "references": [
+    "rosa/mocha-mosaic/ROS-MM__others_01.png"
+  ],
+  "composition": "Editorial hero photograph, informative fact rail and three real detail panels.",
+  "requiredContent": [
+    "Useful verified material and finish facts with explanations",
+    "Original texture, full pattern and edge inserts"
+  ],
+  "reject": [
+    "Sparse information, weak hierarchy or misalignment",
+    "Unreadable or clipped text",
+    "Unsupported claims or altered fabric detail"
+  ]
+}
+```
 
-### 13 · Multiple occasions — `__others_02.png`
+### 13 · Four occasions — `__others_02.png`
 
-- **Scene:** Restrained 2 × 2 layout of four distinct professional photographs: everyday breakfast, family meal, sheltered terrace lunch, evening dinner. Use the same cloth in every panel.
-- **Text:** Optional short scene labels only.
-- **Check:** The settings change but the print, colors, and edge do not.
+```shot-json
+{
+  "slot": "others_02",
+  "title": "Four occasions",
+  "method": "infographic",
+  "references": [
+    "rosa/terracotta-garden/ROS-TG__others_02.png"
+  ],
+  "composition": "Four distinct scenes in a 2 × 2 grid: breakfast, family meal, sheltered terrace lunch and evening dinner.",
+  "requiredContent": [
+    "Four photos with headings and useful captions",
+    "Same print, colours and source pattern scale in every setting"
+  ],
+  "reject": [
+    "Sparse information, weak hierarchy or misalignment",
+    "Unreadable or clipped text",
+    "Unsupported claims or altered fabric detail"
+  ]
+}
+```
 
-### 14 · Care in use — `__others_03.png`
+### 14 · Care routine — `__others_03.png`
 
-- **Scene:** Small photographic sequence: cloth on table, neatly folded for laundering, and refreshed on table. Avoid a staged stain-removal claim.
-- **Text:** Short heading and verified wash temperature only; no unverified bleaching, tumble-drying, ironing, or stain-resistance instructions.
-- **Check:** Depicted actions and copy agree with approved care data.
+```shot-json
+{
+  "slot": "others_03",
+  "title": "Care routine",
+  "method": "infographic",
+  "references": [
+    "rosa/terracotta-garden/ROS-TG__others_03.png"
+  ],
+  "composition": "Four numbered photographic care steps with legible English explanations. Use supplied label instructions where available; otherwise present conservative material-specific advice as general guidance.",
+  "requiredContent": [
+    "Four informative sequential steps",
+    "Care guidance and matching actions consistent with supplied material facts"
+  ],
+  "reject": [
+    "Sparse information, weak hierarchy or misalignment",
+    "Unreadable or clipped text",
+    "Unsupported claims or altered fabric detail"
+  ]
+}
+```
 
 ### 15 · Home styling — `__others_04.png`
 
-- **Scene:** Three or four coordinated room photographs showing the same cloth with furnishings selected for its colors. Styling and light may vary; product color must remain fixed.
-- **Text:** Optional neutral styling labels such as “Natural wood” or “Cream ceramics”.
-- **Check:** Enough tabletop remains visible in every panel to identify the product; no implication that props are included.
+```shot-json
+{
+  "slot": "others_04",
+  "title": "Home styling",
+  "method": "infographic",
+  "references": [
+    "rosa/terracotta-garden/ROS-TG__others_04.png"
+  ],
+  "composition": "Hero and actual detail beside three styling vignettes with named material/color swatches.",
+  "requiredContent": [
+    "Useful styling explanations",
+    "Product color stays constant; props not included"
+  ],
+  "reject": [
+    "Sparse information, weak hierarchy or misalignment",
+    "Unreadable or clipped text",
+    "Unsupported claims or altered fabric detail"
+  ]
+}
+```
 
 ### 16 · How to measure — `__others_05.png`
 
-- **Scene:** Clean instructional layout with real-looking table photography and precise measurement arrows for length, width or diameter, and desired drop. Cover active shapes without implying one pictured table is a particular SKU.
-- **Text:** The geometry formula “tablecloth dimension = table dimension + 2 × desired drop” may be used. Any shown product sizes must come from current PIM data. Do not invent a recommended drop.
-- **Check:** Arrows point to the correct dimensions; text is readable and sizes match PIM.
+```shot-json
+{
+  "slot": "others_05",
+  "title": "How to measure",
+  "method": "infographic",
+  "references": [
+    "rosa/terracotta-garden/ROS-TG__others_05.png"
+  ],
+  "composition": "Three instructions, active-shape measurement diagrams and prominent dimension formula with real fabric detail.",
+  "requiredContent": [
+    "Measure tabletop including extensions in use",
+    "Cloth dimension = table dimension + 2 × desired drop",
+    "Length/width or diameter arrows; no invented recommended drop"
+  ],
+  "reject": [
+    "Sparse information, weak hierarchy or misalignment",
+    "Unreadable or clipped text",
+    "Unsupported claims or altered fabric detail"
+  ]
+}
+```
 
-### 17 · Cloth overview — `__others_06.png`
+### 17 · What you get — `__others_06.png`
 
-- **Scene:** Studio photograph of a neatly folded cloth beside a partially opened section showing the real print and edge. Neutral backdrop, soft shadow.
-- **Text:** Optional product name and verified material or origin facts.
-- **Check:** No imagined retail bag, printed label, barcode, EAN, address, or bundle contents.
+```shot-json
+{
+  "slot": "others_06",
+  "title": "What you get",
+  "method": "infographic",
+  "references": [
+    "rosa/mocha-mosaic/ROS-MM__others_06.png"
+  ],
+  "composition": "Open product, folded cloth and original detail above an informative factual checklist.",
+  "requiredContent": [
+    "Verified contents, composition and finish",
+    "No invented package, label, barcode or EAN"
+  ],
+  "reject": [
+    "Sparse information, weak hierarchy or misalignment",
+    "Unreadable or clipped text",
+    "Unsupported claims or altered fabric detail"
+  ]
+}
+```
 
-### 18 · Full-pattern flat lay — `__others_07.png`
+### 18 · Pattern and edge details — `__others_07.png`
 
-- **Scene:** Entire rectangular cloth laid flat on a plain surface, evenly lit, all four edges within the square frame. No props or perspective trick. Use the original full-pattern photograph as the geometric master.
-- **Text:** None.
-- **Check:** Repeat count, motif order, field and divider positions, colors, and perimeter permit direct comparison to the original. If generation changes the design, use a faithful cleanup of the original photograph.
+```shot-json
+{
+  "slot": "others_07",
+  "title": "Pattern and edge details",
+  "method": "infographic",
+  "references": [
+    "rosa/mocha-mosaic/ROS-MM__others_01.png"
+  ],
+  "composition": "Faithful full-pattern view with two substantial fabric and edge detail panels and explanatory English labels. Use the same visual family as the material card.",
+  "requiredContent": [
+    "Explain full arrangement, decorative dividers and edge construction",
+    "All panels faithfully match the original product photographs"
+  ],
+  "reject": [
+    "Sparse information, weak hierarchy or misalignment",
+    "Unreadable or clipped text",
+    "Unsupported claims or altered fabric detail"
+  ]
+}
+```
 
-## Collection-shared image
+## Compliance images
 
-`<collection-slug>/<collection-slug>__size-guide.jpg` is a separate collection task and is reused across products. It should explain how to measure the table and show current collection shapes and sizes. Review and revise it when PIM defaults change. The current [ROSA size guide](rosa/rosa__size-guide.jpg) omits active oval and square options and the 130 × 150 cm size; review it before using it for the pilot. Replacement of the existing file requires visual review.
+Follow the established Country Check, Mocha Mosaic, Terracotta Garden and Coffee Lecce compositions below while preserving this product's actual fabric and verified facts. Keep label design consistent across the shared package and variant packages. Text belongs on the photographed label, with no floating captions or infographic layout. Shared images omit variant-specific sizes, SKUs and EANs. A dimension image shared by rectangle and oval omits shape-specific text and any barcode that differs between those SKUs. Never reuse the reference images' barcode or address.
 
-Packaging and retail-label images are outside this two-photo recipe. Add such a slot only when an actual package photograph and approved label data are supplied.
+PIM expands the `compliance__variant` template into one shot for each distinct active key; the template itself is never saved as a file. Exact size and shape information is supplied with each expanded shot. Multiple active round or square sizes share their established key, so show all applicable sizes without selecting an arbitrary SKU. Existing runs can add missing recipe images in PIM while keeping their originals, saved conversations and previous attempts. Newly added shots each start their own conversation with both originals.
 
-## Pilot run card: ROSA Autumn Patchwork (`ROS-AP`)
+### 19 · Complete packaged product — `__compliance__packaging.png`
 
-- **Output folder:** `rosa/autumn-patchwork/`.
-- **Inputs for this run:** `rosa/autumn-patchwork/00-fullview.jpg`, `00-closeup-left.jpg`, and `00-closeup-right.jpg`. Pass the full view and both close-ups to every image agent; do not substitute a generated image for an original. These `00-*` files are interim source names in the product folder. Move them under `sources/` after the PIM scanner excludes that directory, before importing this product's repository images into the PIM.
-- **PIM facts checked 2026-10-07:** ROSA; 100% polyester; 140 g/m²; scallop-cut edge; made in Bulgaria; manufacturer Sitex OOD. Active shapes: rectangle, oval, round, square. Rectangle and oval sizes: 100 × 150, 130 × 150, 140 × 180, 150 × 220 cm. Square: 150 × 150 cm. Round: Ø150 cm.
-- **Visual lock:** One continuous tablecloth with repeated square fields separated by narrow dark-and-light ornamental bands. Warm ochre/orange, muted rose, taupe/gray, burgundy, and dark plum fields carry leaves and large flowers. Preserve their order, relative scale, texture, and the scalloped outer edge. The patchwork-like design is a print, not separately sewn squares.
-- **Review gates:** Compare `__main`, `__above-view`, and `__closeup-1` to the originals before completing the set. For `__above-view`, verify a truly vertical camera, no visible hanging hem, and small source-scale repeat. Review every selected image before publishing; a generated print may remain an approximation even when its scene is photorealistic.
+```shot-json
+{
+  "slot": "compliance__packaging",
+  "title": "Complete packaged product",
+  "method": "compliance",
+  "references": [
+    "rosa/country-check/ROS-CC__compliance__packaging.png",
+    "rosa/mocha-mosaic/ROS-MM__compliance__packaging.png"
+  ],
+  "composition": "Front-facing studio product photograph of one neatly folded tablecloth in a clear retail bag, complete package within the frame, neutral background and soft shadow. Show the actual print through the bag. A centered white paper label carries the product name and code, a small faithful in-use product photograph, verified composition, manufacturer and origin in legible English. Keep the label design consistent with the variant package images.",
+  "requiredContent": [
+    "Entire clear package and actual fabric visible",
+    "Product name, product code and supplied composition, manufacturer and origin",
+    "Shared product label without a variant-specific size, SKU or EAN"
+  ],
+  "reject": [
+    "Wrong pattern, colors or edge",
+    "Cropped bag, unreadable label or floating infographic text",
+    "Invented address, care instructions, certification, barcode or EAN",
+    "Copied reference-product identity or label data"
+  ]
+}
+```
 
-### Copyable one-agent assignment
+### 20 · Product label close-up — `__compliance__label.png`
 
-```text
-Product: {PIM product name, code, collection, active shapes/sizes, verified facts}
-Original A: {exact full-pattern photo path}
-Original B: {exact close-up photo path}
-Visual lock: {product-specific pattern, motif, colors, texture, edge}
-Assigned image: {one numbered heading above and its full destination path}
-Task: Create one photorealistic candidate. Compare it with both originals at full
-      view and close view. Revise any pattern, edge, shape, perspective, or text
-      error. Save only the selected square PNG at the assigned path.
-Report: saved path; format/dimensions; print/edge/shape/text checks; any limitation.
+```shot-json
+{
+  "slot": "compliance__label",
+  "title": "Product label close-up",
+  "method": "compliance",
+  "references": [
+    "rosa/country-check/ROS-CC__compliance__label.png",
+    "pastel/01-coffee-lecce/PAS-CL__compliance__label.png"
+  ],
+  "composition": "Tight sharply focused product photograph of a white textile label resting against the actual cloth near its finished edge. Keep enough surrounding print and texture to identify the product. The label clearly shows the exact product code, supplied country of origin, manufacturer and composition in legible English, with clean black typography and realistic textile detail.",
+  "requiredContent": [
+    "Exact product code and supplied origin, manufacturer and composition",
+    "Actual fabric, motif and edge visible around the label",
+    "All label text sharply readable"
+  ],
+  "reject": [
+    "Wrong fabric or invented edge construction",
+    "Invented address, care symbols, certification, barcode or EAN",
+    "Reference-product text, spelling errors or unreadable lettering"
+  ]
+}
+```
+
+### 21 · Variant packaged product — `__compliance__<key>.png`
+
+```shot-json
+{
+  "slot": "compliance__variant",
+  "title": "Packaged product",
+  "method": "compliance",
+  "expand": "active-compliance-keys",
+  "references": [
+    "rosa/country-check/ROS-CC__compliance__140180.png",
+    "rosa/mocha-mosaic/ROS-MM__compliance__round.png",
+    "rosa/terracotta-garden/ROS-TG__compliance__square.png"
+  ],
+  "composition": "Match the shared complete-package photograph: one neatly folded tablecloth in a clear retail bag, neutral studio background, complete bag visible, faithful print and a consistent centered white paper label with a small in-use product photograph. Add a prominent exact size line for the supplied target variants. Use the supplied round or square shape where applicable; rectangle and oval dimension keys share a shape-neutral label. Retain verified composition, manufacturer, origin and product identity. Omit a SKU or EAN when the image covers multiple variants.",
+  "requiredContent": [
+    "Exact target size in centimetres; round sizes use diameter notation",
+    "Correct product name and code, actual print and consistent package-label design",
+    "Only supplied product facts and target variants"
+  ],
+  "reject": [
+    "Wrong or inactive size or shape",
+    "Arbitrary SKU or barcode on an image shared by different variants",
+    "Invented address, care symbols, certification, barcode or EAN",
+    "Different print, unreadable label or cropped package"
+  ]
+}
 ```
