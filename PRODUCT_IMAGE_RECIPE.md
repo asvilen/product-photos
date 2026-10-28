@@ -1,5 +1,5 @@
 # Product image recipes
-<!-- recipe-version: 9 -->
+<!-- recipe-version: 10 -->
 
 This is the editable master shot list. Sitex PIM reads each `shot-json` block directly. Recipes are captured when a run starts. Generation code lives in `sitex-pim`; this repository contains source photographs, accepted photographs and recipes. The existing `video/` project is outside this workflow.
 
@@ -12,6 +12,8 @@ Choose Generate all, an image category or individual shots. PIM opens one ordina
 All shots, including closeups, complete information cards and compliance images with English label text, are generated through ChatGPT. Card wording, typography and layout can vary creatively while retaining the information and visual purpose specified here. Product claims must agree with the supplied PIM facts. For care cards without label instructions, present conservative material-specific advice as general guidance rather than manufacturer-confirmed instructions. Compliance labels contain only supplied product facts; do not invent care symbols, manufacturer addresses, certifications or barcodes, or copy another pattern's label data.
 
 The originals establish the actual product: preserve its print, colour relationships, motif proportions, textile character and edge construction. Source dimensions establish pattern scale. Use natural regular dining tables and believable drape. Do not specify a numeric drop or prescribe table dimensions. Do not turn printed patchwork into sewn panels.
+
+In every in-use dining scene, the cloth must cover the entire tabletop and extend past every tabletop edge, with the excess fabric hanging down naturally on all sides. Choose a table that fits beneath the cloth at its supplied physical size; never stretch the cloth or enlarge the print to obtain coverage. The originals establish the product's design and finished edge, not a laid-flat arrangement to reproduce on the table. Apply the shot's camera-specific visibility rules: show hanging fabric in oblique views; in the straight-above view, keep the finished hem below the tabletop and out of sight.
 
 Generate each output as one opaque square image, at the highest available quality and at least 1024 pixels per side. The main image includes a small, legible "Ships from EU" sticker when supported by the supplied shipping information, with no other text. Natural-setting, above-view, shapes and closeups contain no text. All information cards contain legible English information. Generate only the product's active PIM shapes and compliance variant keys. Four active shapes give 18 standard files, plus two shared compliance files and one package file per distinct compliance key. For ROSA's four rectangle/oval sizes, round and square, this gives 26 files in total. Collection size guides are separate.
 
@@ -179,15 +181,20 @@ Keep all drafts, downloads, attempt history, measurements and run metadata outsi
   "references": [
     "rosa/autumn-patchwork/ROS-AP__above-view.png"
   ],
-  "composition": "Exactly vertical camera above a regular dining table in a natural setting. Show only physically visible fabric: hanging cloth below the tabletop plane must not appear flattened onto the tabletop. No text.",
+  "composition": "Exactly vertical camera, looking straight down at a regular dining table in a natural setting. Use a tabletop smaller than the cloth in both directions so the cloth fully covers it and extends beyond every edge. The excess fabric turns downward over all sides under gravity; the finished hem, including any scalloped cut edge, hangs below the tabletop and is not visible from above. The visible fabric boundary follows the smooth bend over the tabletop edge, not the cloth's decorative perimeter. Preserve the source pattern scale and the supplied physical cloth dimensions when choosing a suitable table. Do not copy the original full-view photograph's laid-flat silhouette into this scene. Keep the table within the frame so correct coverage is not achieved merely by cropping. No text.",
   "requiredContent": [
     "Source pattern scale and proportions",
-    "Cloth is central subject"
+    "Cloth is central subject",
+    "Entire tabletop covered, with fabric turning down over every tabletop edge",
+    "Finished hem below the tabletop and out of sight from the vertical camera"
   ],
   "reject": [
-    "Flat scalloped perimeter around tabletop",
-    "Hanging hem visible despite vertical camera",
-    "Enlarged motifs"
+    "Visible finished hem or scalloped cut edge in the straight-above view",
+    "Cloth laid flat like a placemat, runner or topper, with its finished perimeter resting on the tabletop",
+    "Exposed tabletop border, corners or strips outside the cloth",
+    "Hanging fabric flattened or spread outward into the tabletop plane",
+    "Missing overhang on any side or cropping used to hide incorrect coverage",
+    "Enlarged or stretched motifs, or changed cloth dimensions, used to obtain coverage"
   ]
 }
 ```
