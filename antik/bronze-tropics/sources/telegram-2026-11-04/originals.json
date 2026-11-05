@@ -1,0 +1,23 @@
+{
+  "productFolder": "antik/bronze-tropics",
+  "files": [
+    {
+      "file": "photo_1_2026-10-19_16-19-57.jpg",
+      "role": "closeup",
+      "source": "/Users/asvilen/Downloads/Telegram Desktop/photo_1_2026-10-19_16-19-57.jpg",
+      "sha256": "1882de7180c2a628ef7fddab7129c2f84147e5aa6226ba2e9775faae827709e7"
+    },
+    {
+      "file": "photo_2_2026-10-19_16-19-57.jpg",
+      "role": "closeup-alternate",
+      "source": "/Users/asvilen/Downloads/Telegram Desktop/photo_2_2026-10-19_16-19-57.jpg",
+      "sha256": "8830419c304ac2aa04390ea63ecb5e9b1f1e0e098e5db3a960a8a15e24ed05b1"
+    },
+    {
+      "file": "photo_3_2026-10-19_16-19-57.jpg",
+      "role": "fullview",
+      "source": "/Users/asvilen/Downloads/Telegram Desktop/photo_3_2026-10-19_16-19-57.jpg",
+      "sha256": "b46d20e2bed78ea462c57a23aef8f8add23b6b31b165c58ce70634b123453b71"
+    }
+  ]
+}

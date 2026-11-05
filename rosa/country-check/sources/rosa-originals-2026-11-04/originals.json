@@ -1,0 +1,23 @@
+{
+  "productFolder": "rosa/country-check",
+  "files": [
+    {
+      "file": "6-2.jpg",
+      "role": "fullview",
+      "source": "/Users/asvilen/Documents/Documents - Svilen’s Mac mini/eshop/product-photos/rosa/6-2.jpg",
+      "sha256": "9179f202e1f24dd5dcc8d99c7ba8c8bd74662aa9a678e2c67cc8bc9c0fb0f628"
+    },
+    {
+      "file": "6-1.jpg",
+      "role": "closeup",
+      "source": "/Users/asvilen/Documents/Documents - Svilen’s Mac mini/eshop/product-photos/rosa/6-1.jpg",
+      "sha256": "ab5bd0c3ecd84158087e0945f763d6a2879e478aa6d7f963cbb199233637e004"
+    }
+  ],
+  "photographedDimensions": {
+    "horizontalCm": 150,
+    "verticalCm": 100,
+    "fabricWidthAxis": "horizontal",
+    "confirmedByUser": true
+  }
+}

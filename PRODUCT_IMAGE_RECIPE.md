@@ -1,5 +1,5 @@
 # Product image recipes
-<!-- recipe-version: 10 -->
+<!-- recipe-version: 15 -->
 
 This is the editable master shot list. Sitex PIM reads each `shot-json` block directly. Recipes are captured when a run starts. Generation code lives in `sitex-pim`; this repository contains source photographs, accepted photographs and recipes. The existing `video/` project is outside this workflow.
 
@@ -15,9 +15,27 @@ The originals establish the actual product: preserve its print, colour relations
 
 In every in-use dining scene, the cloth must cover the entire tabletop and extend past every tabletop edge, with the excess fabric hanging down naturally on all sides. Choose a table that fits beneath the cloth at its supplied physical size; never stretch the cloth or enlarge the print to obtain coverage. The originals establish the product's design and finished edge, not a laid-flat arrangement to reproduce on the table. Apply the shot's camera-specific visibility rules: show hanging fabric in oblique views; in the straight-above view, keep the finished hem below the tabletop and out of sight.
 
-Generate each output as one opaque square image, at the highest available quality and at least 1024 pixels per side. The main image includes a small, legible "Ships from EU" sticker when supported by the supplied shipping information, with no other text. Natural-setting, above-view, shapes and closeups contain no text. All information cards contain legible English information. Generate only the product's active PIM shapes and compliance variant keys. Four active shapes give 18 standard files, plus two shared compliance files and one package file per distinct compliance key. For ROSA's four rectangle/oval sizes, round and square, this gives 26 files in total. Collection size guides are separate.
+Generate each output as one opaque square image, at the highest available quality and at least 1024 pixels per side. The main image includes a small, legible "Ships from EU" sticker when supported by the supplied shipping information, with no other text. Shape images include exactly two supplied stickers: MADE IN EU at the top left and MULTIPLE SIZES & SHAPES at the bottom right, as specified below. No other text or badges. Natural-setting, above-view and closeups contain no text. All information cards contain legible English information. Generate only the product's active PIM shapes and compliance variant keys. Four active shapes give 18 standard files, plus two shared compliance files and one package file per distinct compliance key. For ROSA's four rectangle/oval sizes, round and square, this gives 26 files in total. Collection size guides are separate.
 
-Composition reference paths below are examples for human comparison; they do not establish this product's fabric or facts and are not uploaded automatically.
+Composition `references` below are examples for human comparison; they do not establish this product's fabric or facts and are not uploaded automatically. Required artwork is listed separately in `graphicReferences`. PIM snapshots these files for selected shots when a run starts and automatically uploads them after the two originals in each shot's conversation, including source recovery. Shots queued later snapshot their required artwork before their first request. Saved artwork is reused for retries and regeneration. Existing runs retain their captured recipes; start a new run to use an updated recipe.
+
+### Two stickers for shape images
+
+Use the two user-approved PNGs, saved unchanged, for `shape__rectangle`, `shape__oval`, `shape__round` and `shape__square` in every collection:
+
+1. [`shared/made-in-eu-ribbon-sticker.png`](shared/made-in-eu-ribbon-sticker.png) — wide blue embroidered ribbon MADE IN EU badge, with curled ribbon ends, a circle of yellow stars, yellow divider and stitching, white lettering, a silver needle and looping yellow thread, and soft shadow. This is the current origin artwork.
+2. [`shared/multiple-sizes-shapes-sticker.png`](shared/multiple-sizes-shapes-sticker.png) — white oval MULTIPLE SIZES & SHAPES badge, with blue lettering and three tablecloth diagrams, yellow border and blue offset edge.
+
+Each shape recipe lists these files in `graphicReferences` in that order. PIM automatically supplies the authentic full view as image 1, the closeup as image 2, MADE IN EU as image 3 and MULTIPLE SIZES & SHAPES as image 4. Images 1 and 2 alone establish the textile. Images 3 and 4 supply graphic artwork only; their embroidery, sewing illustrations, colours and diagrams must never alter the photographed product. PIM preserves both graphics with the run and reattaches both during source recovery. Flag unavailable artwork for review rather than inventing a replacement.
+
+Use [`shared/references/shape-two-stickers-example.png`](shared/references/shape-two-stickers-example.png) as the human composition example: one large, isolated tablecloth in an elevated three-quarter view on a clean white background, realistic drape and soft ground shadow, with the origin badge in the upper-left space and the oval range badge in the lower-right space. The example establishes layout only; use the current ribbon-shaped origin artwork instead of its older round badge. Never copy its floral print, colours, fabric or edge onto another product. It is a human-only `references` example, not an automatically uploaded product or graphic reference; each shot's composition below restates the layout.
+
+- Apply exactly one instance of each supplied sticker as a flat graphic overlay. Preserve the original artwork, wording, colours, texture, outlines, diagrams and aspect ratios. Use the correct artwork spelling MULTIPLE SIZES & SHAPES. No EASY CARE sticker, previous brushstroke, round or scalloped square origin stickers, size labels or extra badges.
+- The new MADE IN EU PNG has an opaque warm-white exterior background. For placement, isolate only that exterior background and outer margins; preserve the wide blue ribbon, curled ends, yellow stitching and stars, white lettering, silver needle, looping yellow thread and soft shadow. The MULTIPLE SIZES & SHAPES PNG has transparency: preserve its alpha and white oval face. Size and anchor the visible artwork rather than the full input canvas. Do not paste rectangular backdrops or remove white details within either badge. Never redraw the stickers or sew them onto the actual tablecloth.
+- MADE IN EU: top-left; visible artwork width 24% of the square canvas, left inset 6%, top inset 2.5%. At 2000 × 2000 px this is 480 px wide at X = 120 px, Y = 50 px. Preserve its wide ribbon outline, curled ends and original aspect ratio; do not compress it into a square or circle.
+- MULTIPLE SIZES & SHAPES: bottom-right; visible artwork width 36% of the canvas, right inset 3%, bottom inset 4%. At 2000 × 2000 px this is 720 px wide, ending at X = 1940 px and Y = 1920 px. Derive height from the original artwork's aspect ratio; do not stretch it to match the example.
+- Use the same proportional sticker sizes and corner anchors for every shape. Keep the product large and dominant, its full perimeter visible, and both badges clear of its motifs and drape. Arrange the product within the central diagonal space; adjust framing before reducing product prominence. Keep both badges fully inside the canvas. Review at 400, 200 and 120 px square.
+- Manufacturing origin and available sizes/shapes must agree with supplied PIM facts. Shipping origin alone does not establish manufacturing origin. The range badge describes available variants; depict one tablecloth of the requested shape, not a bundle or several products.
 
 ## Files
 
@@ -61,18 +79,33 @@ Keep all drafts, downloads, attempt history, measurements and run metadata outsi
   "title": "Rectangle shape",
   "method": "photo",
   "references": [
-    "rosa/country-check/ROS-CC__shape__rectangle.png"
+    "rosa/country-check/ROS-CC__shape__rectangle.png",
+    "shared/references/shape-two-stickers-example.png"
   ],
-  "composition": "Pure white studio background. Entire rectangle cloth on concealed support of the same shape. Elevated three-quarter camera. Match light, framing and scale across series. No legs, furniture, props or text.",
+  "graphicReferences": [
+    "shared/made-in-eu-ribbon-sticker.png",
+    "shared/multiple-sizes-shapes-sticker.png"
+  ],
+  "composition": "Pure white studio background. One entire rectangle tablecloth on concealed support of the same shape, photographed from an elevated three-quarter angle. Follow the two-sticker example layout: a large central product with a broad visible tabletop, natural hanging fabric and finished edges, soft realistic ground shadow and open white corner space. Match light, framing and product scale across the series. Preserve this product's authentic print, physical motif scale, texture, edge and shape; never copy the example's floral pattern. No visible legs, furniture or props. Add exactly two supplied graphic overlays. Image 3, shared/made-in-eu-ribbon-sticker.png, is the wide blue embroidered ribbon MADE IN EU badge with curled ends, a circle of yellow stars, yellow divider and stitching, white lettering, a silver needle, looping yellow thread and soft shadow: place its visible artwork at the top left, 24% of canvas width, inset 6% from the left and 2.5% from the top. Image 4, shared/multiple-sizes-shapes-sticker.png, is the white oval MULTIPLE SIZES & SHAPES badge with blue lettering and table diagrams, yellow border and blue offset edge: place its visible artwork at the bottom right, 36% of canvas width, inset 3% from the right and 4% from the bottom. Preserve both supplied artworks, their lettering, colours, texture, outlines and aspect ratios. Isolate only the opaque warm-white exterior background and outer margins of the MADE IN EU input, retaining the ribbon outline, curled ends, lettering, needle, yellow thread and soft shadow. Preserve the range badge's transparency and white oval face. Size and anchor the visible artwork; no black or rectangular backgrounds. Keep the whole cloth large, recognizable and fully inside the frame; reserve clear corner space so neither badge covers the product, motifs, drape or perimeter. Images 1 and 2 are the authentic product references; images 3 and 4 supply only sticker artwork. Do not apply the badge embroidery or diagram styling to the textile. Show one tablecloth of the requested shape; the range badge describes available variants, not included extras. Use supplied PIM facts for manufacturing origin and variant availability. No EASY CARE sticker, previous brushstroke badge, additional text or other badges. Flag missing artwork or unsupported claims for review instead of inventing replacements.",
   "requiredContent": [
-    "Recognizable silhouette and full perimeter",
+    "Recognizable requested shape and full visible perimeter of one tablecloth",
     "Source-scale repeat; cuts alter counts, never stretch motifs",
-    "Soft shadow and plausible drape"
+    "Authentic fabric and edge, soft ground shadow and plausible drape",
+    "Exactly two supplied stickers: wide embroidered ribbon MADE IN EU at the top left and oval MULTIPLE SIZES & SHAPES at the bottom right",
+    "Consistent proportional sticker sizes and corner anchors, original aspect ratios, cleanly isolated origin artwork and preserved range-badge transparency",
+    "Images 3 and 4 supplied as graphic inputs; images 1 and 2 remain the product source of truth",
+    "PIM-supported manufacturing origin and variant availability; both badges clear of the entire product"
   ],
   "reject": [
-    "Visible legs/support or room background",
-    "Ambiguous silhouette or cropped perimeter",
-    "Changed print geometry"
+    "Visible legs/support, room background, props or multiple actual tablecloths",
+    "Ambiguous silhouette, cropped perimeter or altered print geometry",
+    "Missing, duplicated, swapped, redrawn, distorted, cropped or unreadable stickers",
+    "Previous round, scalloped square or brushstroke origin badge, EASY CARE sticker, additional labels or badges",
+    "Changed sticker lettering, colours, texture, outlines or table diagrams",
+    "Unremoved exterior origin-image backdrop, black/rectangular sticker backgrounds, removed white origin details, lost range-badge transparency or removed white oval face",
+    "Stickers cover the cloth, motifs, drape or finished edge, or make the product secondary",
+    "Example floral fabric, badge embroidery or illustrated diagrams copied onto the actual textile",
+    "Unsupported origin or size/shape availability claims, or either required graphic unavailable"
   ]
 }
 ```
@@ -85,18 +118,33 @@ Keep all drafts, downloads, attempt history, measurements and run metadata outsi
   "title": "Oval shape",
   "method": "photo",
   "references": [
-    "rosa/country-check/ROS-CC__shape__oval.png"
+    "rosa/country-check/ROS-CC__shape__oval.png",
+    "shared/references/shape-two-stickers-example.png"
   ],
-  "composition": "Pure white studio background. Entire oval cloth on concealed support of the same shape. Elevated three-quarter camera. Match light, framing and scale across series. No legs, furniture, props or text.",
+  "graphicReferences": [
+    "shared/made-in-eu-ribbon-sticker.png",
+    "shared/multiple-sizes-shapes-sticker.png"
+  ],
+  "composition": "Pure white studio background. One entire oval tablecloth on concealed support of the same shape, photographed from an elevated three-quarter angle. Follow the two-sticker example layout: a large central product with a broad visible tabletop, natural hanging fabric and finished edges, soft realistic ground shadow and open white corner space. Match light, framing and product scale across the series. Preserve this product's authentic print, physical motif scale, texture, edge and shape; never copy the example's floral pattern. No visible legs, furniture or props. Add exactly two supplied graphic overlays. Image 3, shared/made-in-eu-ribbon-sticker.png, is the wide blue embroidered ribbon MADE IN EU badge with curled ends, a circle of yellow stars, yellow divider and stitching, white lettering, a silver needle, looping yellow thread and soft shadow: place its visible artwork at the top left, 24% of canvas width, inset 6% from the left and 2.5% from the top. Image 4, shared/multiple-sizes-shapes-sticker.png, is the white oval MULTIPLE SIZES & SHAPES badge with blue lettering and table diagrams, yellow border and blue offset edge: place its visible artwork at the bottom right, 36% of canvas width, inset 3% from the right and 4% from the bottom. Preserve both supplied artworks, their lettering, colours, texture, outlines and aspect ratios. Isolate only the opaque warm-white exterior background and outer margins of the MADE IN EU input, retaining the ribbon outline, curled ends, lettering, needle, yellow thread and soft shadow. Preserve the range badge's transparency and white oval face. Size and anchor the visible artwork; no black or rectangular backgrounds. Keep the whole cloth large, recognizable and fully inside the frame; reserve clear corner space so neither badge covers the product, motifs, drape or perimeter. Images 1 and 2 are the authentic product references; images 3 and 4 supply only sticker artwork. Do not apply the badge embroidery or diagram styling to the textile. Show one tablecloth of the requested shape; the range badge describes available variants, not included extras. Use supplied PIM facts for manufacturing origin and variant availability. No EASY CARE sticker, previous brushstroke badge, additional text or other badges. Flag missing artwork or unsupported claims for review instead of inventing replacements.",
   "requiredContent": [
-    "Recognizable silhouette and full perimeter",
+    "Recognizable requested shape and full visible perimeter of one tablecloth",
     "Source-scale repeat; cuts alter counts, never stretch motifs",
-    "Soft shadow and plausible drape"
+    "Authentic fabric and edge, soft ground shadow and plausible drape",
+    "Exactly two supplied stickers: wide embroidered ribbon MADE IN EU at the top left and oval MULTIPLE SIZES & SHAPES at the bottom right",
+    "Consistent proportional sticker sizes and corner anchors, original aspect ratios, cleanly isolated origin artwork and preserved range-badge transparency",
+    "Images 3 and 4 supplied as graphic inputs; images 1 and 2 remain the product source of truth",
+    "PIM-supported manufacturing origin and variant availability; both badges clear of the entire product"
   ],
   "reject": [
-    "Visible legs/support or room background",
-    "Ambiguous silhouette or cropped perimeter",
-    "Changed print geometry"
+    "Visible legs/support, room background, props or multiple actual tablecloths",
+    "Ambiguous silhouette, cropped perimeter or altered print geometry",
+    "Missing, duplicated, swapped, redrawn, distorted, cropped or unreadable stickers",
+    "Previous round, scalloped square or brushstroke origin badge, EASY CARE sticker, additional labels or badges",
+    "Changed sticker lettering, colours, texture, outlines or table diagrams",
+    "Unremoved exterior origin-image backdrop, black/rectangular sticker backgrounds, removed white origin details, lost range-badge transparency or removed white oval face",
+    "Stickers cover the cloth, motifs, drape or finished edge, or make the product secondary",
+    "Example floral fabric, badge embroidery or illustrated diagrams copied onto the actual textile",
+    "Unsupported origin or size/shape availability claims, or either required graphic unavailable"
   ]
 }
 ```
@@ -109,18 +157,33 @@ Keep all drafts, downloads, attempt history, measurements and run metadata outsi
   "title": "Round shape",
   "method": "photo",
   "references": [
-    "rosa/country-check/ROS-CC__shape__round.png"
+    "rosa/country-check/ROS-CC__shape__round.png",
+    "shared/references/shape-two-stickers-example.png"
   ],
-  "composition": "Pure white studio background. Entire round cloth on concealed support of the same shape. Elevated three-quarter camera. Match light, framing and scale across series. No legs, furniture, props or text.",
+  "graphicReferences": [
+    "shared/made-in-eu-ribbon-sticker.png",
+    "shared/multiple-sizes-shapes-sticker.png"
+  ],
+  "composition": "Pure white studio background. One entire round tablecloth on concealed support of the same shape, photographed from an elevated three-quarter angle. Follow the two-sticker example layout: a large central product with a broad visible tabletop, natural hanging fabric and finished edges, soft realistic ground shadow and open white corner space. Match light, framing and product scale across the series. Preserve this product's authentic print, physical motif scale, texture, edge and shape; never copy the example's floral pattern. No visible legs, furniture or props. Add exactly two supplied graphic overlays. Image 3, shared/made-in-eu-ribbon-sticker.png, is the wide blue embroidered ribbon MADE IN EU badge with curled ends, a circle of yellow stars, yellow divider and stitching, white lettering, a silver needle, looping yellow thread and soft shadow: place its visible artwork at the top left, 24% of canvas width, inset 6% from the left and 2.5% from the top. Image 4, shared/multiple-sizes-shapes-sticker.png, is the white oval MULTIPLE SIZES & SHAPES badge with blue lettering and table diagrams, yellow border and blue offset edge: place its visible artwork at the bottom right, 36% of canvas width, inset 3% from the right and 4% from the bottom. Preserve both supplied artworks, their lettering, colours, texture, outlines and aspect ratios. Isolate only the opaque warm-white exterior background and outer margins of the MADE IN EU input, retaining the ribbon outline, curled ends, lettering, needle, yellow thread and soft shadow. Preserve the range badge's transparency and white oval face. Size and anchor the visible artwork; no black or rectangular backgrounds. Keep the whole cloth large, recognizable and fully inside the frame; reserve clear corner space so neither badge covers the product, motifs, drape or perimeter. Images 1 and 2 are the authentic product references; images 3 and 4 supply only sticker artwork. Do not apply the badge embroidery or diagram styling to the textile. Show one tablecloth of the requested shape; the range badge describes available variants, not included extras. Use supplied PIM facts for manufacturing origin and variant availability. No EASY CARE sticker, previous brushstroke badge, additional text or other badges. Flag missing artwork or unsupported claims for review instead of inventing replacements.",
   "requiredContent": [
-    "Recognizable silhouette and full perimeter",
+    "Recognizable requested shape and full visible perimeter of one tablecloth",
     "Source-scale repeat; cuts alter counts, never stretch motifs",
-    "Soft shadow and plausible drape"
+    "Authentic fabric and edge, soft ground shadow and plausible drape",
+    "Exactly two supplied stickers: wide embroidered ribbon MADE IN EU at the top left and oval MULTIPLE SIZES & SHAPES at the bottom right",
+    "Consistent proportional sticker sizes and corner anchors, original aspect ratios, cleanly isolated origin artwork and preserved range-badge transparency",
+    "Images 3 and 4 supplied as graphic inputs; images 1 and 2 remain the product source of truth",
+    "PIM-supported manufacturing origin and variant availability; both badges clear of the entire product"
   ],
   "reject": [
-    "Visible legs/support or room background",
-    "Ambiguous silhouette or cropped perimeter",
-    "Changed print geometry"
+    "Visible legs/support, room background, props or multiple actual tablecloths",
+    "Ambiguous silhouette, cropped perimeter or altered print geometry",
+    "Missing, duplicated, swapped, redrawn, distorted, cropped or unreadable stickers",
+    "Previous round, scalloped square or brushstroke origin badge, EASY CARE sticker, additional labels or badges",
+    "Changed sticker lettering, colours, texture, outlines or table diagrams",
+    "Unremoved exterior origin-image backdrop, black/rectangular sticker backgrounds, removed white origin details, lost range-badge transparency or removed white oval face",
+    "Stickers cover the cloth, motifs, drape or finished edge, or make the product secondary",
+    "Example floral fabric, badge embroidery or illustrated diagrams copied onto the actual textile",
+    "Unsupported origin or size/shape availability claims, or either required graphic unavailable"
   ]
 }
 ```
@@ -133,18 +196,33 @@ Keep all drafts, downloads, attempt history, measurements and run metadata outsi
   "title": "Square shape",
   "method": "photo",
   "references": [
-    "rosa/country-check/ROS-CC__shape__square.png"
+    "rosa/country-check/ROS-CC__shape__square.png",
+    "shared/references/shape-two-stickers-example.png"
   ],
-  "composition": "Pure white studio background. Entire square cloth on concealed support of the same shape. Elevated three-quarter camera. Match light, framing and scale across series. No legs, furniture, props or text.",
+  "graphicReferences": [
+    "shared/made-in-eu-ribbon-sticker.png",
+    "shared/multiple-sizes-shapes-sticker.png"
+  ],
+  "composition": "Pure white studio background. One entire square tablecloth on concealed support of the same shape, photographed from an elevated three-quarter angle. Follow the two-sticker example layout: a large central product with a broad visible tabletop, natural hanging fabric and finished edges, soft realistic ground shadow and open white corner space. Match light, framing and product scale across the series. Preserve this product's authentic print, physical motif scale, texture, edge and shape; never copy the example's floral pattern. No visible legs, furniture or props. Add exactly two supplied graphic overlays. Image 3, shared/made-in-eu-ribbon-sticker.png, is the wide blue embroidered ribbon MADE IN EU badge with curled ends, a circle of yellow stars, yellow divider and stitching, white lettering, a silver needle, looping yellow thread and soft shadow: place its visible artwork at the top left, 24% of canvas width, inset 6% from the left and 2.5% from the top. Image 4, shared/multiple-sizes-shapes-sticker.png, is the white oval MULTIPLE SIZES & SHAPES badge with blue lettering and table diagrams, yellow border and blue offset edge: place its visible artwork at the bottom right, 36% of canvas width, inset 3% from the right and 4% from the bottom. Preserve both supplied artworks, their lettering, colours, texture, outlines and aspect ratios. Isolate only the opaque warm-white exterior background and outer margins of the MADE IN EU input, retaining the ribbon outline, curled ends, lettering, needle, yellow thread and soft shadow. Preserve the range badge's transparency and white oval face. Size and anchor the visible artwork; no black or rectangular backgrounds. Keep the whole cloth large, recognizable and fully inside the frame; reserve clear corner space so neither badge covers the product, motifs, drape or perimeter. Images 1 and 2 are the authentic product references; images 3 and 4 supply only sticker artwork. Do not apply the badge embroidery or diagram styling to the textile. Show one tablecloth of the requested shape; the range badge describes available variants, not included extras. Use supplied PIM facts for manufacturing origin and variant availability. No EASY CARE sticker, previous brushstroke badge, additional text or other badges. Flag missing artwork or unsupported claims for review instead of inventing replacements.",
   "requiredContent": [
-    "Recognizable silhouette and full perimeter",
+    "Recognizable requested shape and full visible perimeter of one tablecloth",
     "Source-scale repeat; cuts alter counts, never stretch motifs",
-    "Soft shadow and plausible drape"
+    "Authentic fabric and edge, soft ground shadow and plausible drape",
+    "Exactly two supplied stickers: wide embroidered ribbon MADE IN EU at the top left and oval MULTIPLE SIZES & SHAPES at the bottom right",
+    "Consistent proportional sticker sizes and corner anchors, original aspect ratios, cleanly isolated origin artwork and preserved range-badge transparency",
+    "Images 3 and 4 supplied as graphic inputs; images 1 and 2 remain the product source of truth",
+    "PIM-supported manufacturing origin and variant availability; both badges clear of the entire product"
   ],
   "reject": [
-    "Visible legs/support or room background",
-    "Ambiguous silhouette or cropped perimeter",
-    "Changed print geometry"
+    "Visible legs/support, room background, props or multiple actual tablecloths",
+    "Ambiguous silhouette, cropped perimeter or altered print geometry",
+    "Missing, duplicated, swapped, redrawn, distorted, cropped or unreadable stickers",
+    "Previous round, scalloped square or brushstroke origin badge, EASY CARE sticker, additional labels or badges",
+    "Changed sticker lettering, colours, texture, outlines or table diagrams",
+    "Unremoved exterior origin-image backdrop, black/rectangular sticker backgrounds, removed white origin details, lost range-badge transparency or removed white oval face",
+    "Stickers cover the cloth, motifs, drape or finished edge, or make the product secondary",
+    "Example floral fabric, badge embroidery or illustrated diagrams copied onto the actual textile",
+    "Unsupported origin or size/shape availability claims, or either required graphic unavailable"
   ]
 }
 ```

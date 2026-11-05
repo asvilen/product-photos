@@ -1,0 +1,23 @@
+{
+  "productFolder": "rosa/florentina",
+  "files": [
+    {
+      "file": "5-2.jpg",
+      "role": "fullview",
+      "source": "/Users/asvilen/Documents/Documents - Svilen’s Mac mini/eshop/product-photos/rosa/5-2.jpg",
+      "sha256": "b79664ac884883d4af31a4ba1252740f2b50a8b324818a49e5b607f45d4d9198"
+    },
+    {
+      "file": "5-1.jpg",
+      "role": "closeup",
+      "source": "/Users/asvilen/Documents/Documents - Svilen’s Mac mini/eshop/product-photos/rosa/5-1.jpg",
+      "sha256": "b8d8e1d4215cae65ad5d2a6acc35fb3745f82fdbac027a1cb0daca4d0dee78ba"
+    }
+  ],
+  "photographedDimensions": {
+    "horizontalCm": 100,
+    "verticalCm": 150,
+    "fabricWidthAxis": "vertical",
+    "confirmedByUser": true
+  }
+}

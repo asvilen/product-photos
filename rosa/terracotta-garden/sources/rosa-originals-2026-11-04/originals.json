@@ -1,0 +1,23 @@
+{
+  "productFolder": "rosa/terracotta-garden",
+  "files": [
+    {
+      "file": "1-2.jpg",
+      "role": "fullview",
+      "source": "/Users/asvilen/Documents/Documents - Svilen’s Mac mini/eshop/product-photos/rosa/1-2.jpg",
+      "sha256": "410f14a550a0a6dac6759fdb6100b9d00db6771400254924492bae44479827f0"
+    },
+    {
+      "file": "1-1.jpg",
+      "role": "closeup",
+      "source": "/Users/asvilen/Documents/Documents - Svilen’s Mac mini/eshop/product-photos/rosa/1-1.jpg",
+      "sha256": "8065f599700469580297924dfbb5b968dac296bca3ee5392e0848e187a019ff9"
+    }
+  ],
+  "photographedDimensions": {
+    "horizontalCm": 100,
+    "verticalCm": 150,
+    "fabricWidthAxis": "vertical",
+    "confirmedByUser": true
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "productFolder": "antik/8-soft-bloom",
+  "files": [
+    {
+      "file": "0-full-view.jpg",
+      "role": "fullview",
+      "source": "/Users/asvilen/repos/product-photos/antik/8-soft-bloom/0-full-view.jpg",
+      "sha256": "acb387d9b61c2b3563a639b82f68b15ca42cb56f4069c132fcc6209b1771e8a0"
+    },
+    {
+      "file": "0-closeup.jpg",
+      "role": "closeup",
+      "source": "/Users/asvilen/repos/product-photos/antik/8-soft-bloom/0-closeup.jpg",
+      "sha256": "769fd926e1497902c493914ea0bb7fd614a6ad2a44353cab619d06f0beb3ddd9"
+    }
+  ],
+  "photographedDimensions": {
+    "horizontalCm": 100,
+    "verticalCm": 150,
+    "fabricWidthAxis": "vertical",
+    "confirmedByUser": true
+  }
+}

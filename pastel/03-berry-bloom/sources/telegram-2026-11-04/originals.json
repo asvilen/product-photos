@@ -1,0 +1,23 @@
+{
+  "productFolder": "pastel/03-berry-bloom",
+  "files": [
+    {
+      "file": "photo_4_2026-11-04_22-12-42.jpg",
+      "role": "fullview",
+      "source": "/Users/asvilen/Downloads/Telegram Desktop/photo_4_2026-11-04_22-12-42.jpg",
+      "sha256": "f5d9044e202e302695a28c7cda4a19e2b800d9c07992ef500e673da250addb92"
+    },
+    {
+      "file": "photo_5_2026-11-04_22-12-42.jpg",
+      "role": "closeup",
+      "source": "/Users/asvilen/Downloads/Telegram Desktop/photo_5_2026-11-04_22-12-42.jpg",
+      "sha256": "850fa14d4dcd639ae00eaebd164df702545c031bde24d51be397888a9b713c79"
+    }
+  ],
+  "photographedDimensions": {
+    "horizontalCm": 100,
+    "verticalCm": 150,
+    "fabricWidthAxis": "vertical",
+    "confirmedByUser": true
+  }
+}

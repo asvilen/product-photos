@@ -1,0 +1,23 @@
+{
+  "productFolder": "pastel/01-coffee-lecce",
+  "files": [
+    {
+      "file": "photo_8_2026-11-04_22-12-42.jpg",
+      "role": "fullview-right-edge-cropped",
+      "source": "/Users/asvilen/Downloads/Telegram Desktop/photo_8_2026-11-04_22-12-42.jpg",
+      "sha256": "8720d24d196970290310913dabb4405abb11621ecb86dbd98274af3a9c40239f"
+    },
+    {
+      "file": "photo_9_2026-11-04_22-12-42.jpg",
+      "role": "closeup",
+      "source": "/Users/asvilen/Downloads/Telegram Desktop/photo_9_2026-11-04_22-12-42.jpg",
+      "sha256": "bd75745efc9261359b62992f941e8c6dd525565985022a14bfe49f0e9e39f34a"
+    }
+  ],
+  "photographedDimensions": {
+    "horizontalCm": 100,
+    "verticalCm": 150,
+    "fabricWidthAxis": "vertical",
+    "confirmedByUser": true
+  }
+}

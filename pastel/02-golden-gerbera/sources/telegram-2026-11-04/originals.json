@@ -1,0 +1,23 @@
+{
+  "productFolder": "pastel/02-golden-gerbera",
+  "files": [
+    {
+      "file": "photo_6_2026-11-04_22-12-42.jpg",
+      "role": "fullview",
+      "source": "/Users/asvilen/Downloads/Telegram Desktop/photo_6_2026-11-04_22-12-42.jpg",
+      "sha256": "d813bc2310c08c65507708dab2373bc49085a3f9c522efeea052363333ff5088"
+    },
+    {
+      "file": "photo_7_2026-11-04_22-12-42.jpg",
+      "role": "closeup",
+      "source": "/Users/asvilen/Downloads/Telegram Desktop/photo_7_2026-11-04_22-12-42.jpg",
+      "sha256": "211db3f2af27423c214ca7371647c91082108804c63b3261c9b924731d4fb523"
+    }
+  ],
+  "photographedDimensions": {
+    "horizontalCm": 100,
+    "verticalCm": 150,
+    "fabricWidthAxis": "vertical",
+    "confirmedByUser": true
+  }
+}

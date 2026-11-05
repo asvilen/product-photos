@@ -1,0 +1,23 @@
+{
+  "productFolder": "rosa/fruit-garden",
+  "files": [
+    {
+      "file": "photo_1_2026-10-14_16-26-47.jpg",
+      "role": "closeup",
+      "source": "/Users/asvilen/Downloads/Telegram Desktop/photo_1_2026-10-14_16-26-47.jpg",
+      "sha256": "a7172e5e06657db01d896a52d971c73cd9891e374465ba4b9684d145642640bf"
+    },
+    {
+      "file": "photo_2_2026-10-14_16-26-47.jpg",
+      "role": "fullview",
+      "source": "/Users/asvilen/Downloads/Telegram Desktop/photo_2_2026-10-14_16-26-47.jpg",
+      "sha256": "0ca155bae72d264c34e96bc1d965e620bfa68ae33c086dfdd65680933905de2a"
+    },
+    {
+      "file": "photo_3_2026-10-14_16-26-47.jpg",
+      "role": "closeup-alternate",
+      "source": "/Users/asvilen/Downloads/Telegram Desktop/photo_3_2026-10-14_16-26-47.jpg",
+      "sha256": "80f23b3d5b49e75551ad190bb43839310dfdfee82fc300d930bab82618ddb799"
+    }
+  ]
+}

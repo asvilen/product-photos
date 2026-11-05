@@ -1,0 +1,29 @@
+{
+  "productFolder": "pastel/04-garden-postcard",
+  "files": [
+    {
+      "file": "photo_1_2026-11-04_22-12-42.jpg",
+      "role": "fullview",
+      "source": "/Users/asvilen/Downloads/Telegram Desktop/photo_1_2026-11-04_22-12-42.jpg",
+      "sha256": "bd3763f9d8ce68104615532e4b198557a08aed0a38231f6f0a2bc8012cde6860"
+    },
+    {
+      "file": "photo_2_2026-11-04_22-12-42.jpg",
+      "role": "closeup",
+      "source": "/Users/asvilen/Downloads/Telegram Desktop/photo_2_2026-11-04_22-12-42.jpg",
+      "sha256": "8b88afb5b5aa34152f8cf62fe7f82045b3900f0cba31e1f3c347f9481a4b57fd"
+    },
+    {
+      "file": "photo_3_2026-11-04_22-12-42.jpg",
+      "role": "closeup-alternate",
+      "source": "/Users/asvilen/Downloads/Telegram Desktop/photo_3_2026-11-04_22-12-42.jpg",
+      "sha256": "4cf3f9ed8fbf169044edaf00cf7d1e3761c295af38cd4353a5e3496b7d652ede"
+    }
+  ],
+  "photographedDimensions": {
+    "horizontalCm": 100,
+    "verticalCm": 150,
+    "fabricWidthAxis": "vertical",
+    "confirmedByUser": true
+  }
+}

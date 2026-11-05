@@ -1,0 +1,23 @@
+{
+  "productFolder": "rosa/mocha-mosaic",
+  "files": [
+    {
+      "file": "2-2.jpg",
+      "role": "fullview",
+      "source": "/Users/asvilen/Documents/Documents - Svilen’s Mac mini/eshop/product-photos/rosa/2-2.jpg",
+      "sha256": "059130d77de6c071e08763e5f3725813993346aa429ac4a03b6c58dd591826f6"
+    },
+    {
+      "file": "2-1.jpg",
+      "role": "closeup",
+      "source": "/Users/asvilen/Documents/Documents - Svilen’s Mac mini/eshop/product-photos/rosa/2-1.jpg",
+      "sha256": "505e706cec5e6073c0d99af7449075e2d41991a7571148a693a4031c2c222e6d"
+    }
+  ],
+  "photographedDimensions": {
+    "horizontalCm": 100,
+    "verticalCm": 150,
+    "fabricWidthAxis": "vertical",
+    "confirmedByUser": true
+  }
+}

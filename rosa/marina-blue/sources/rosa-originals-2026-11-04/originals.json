@@ -1,0 +1,23 @@
+{
+  "productFolder": "rosa/marina-blue",
+  "files": [
+    {
+      "file": "4-2.jpg",
+      "role": "fullview",
+      "source": "/Users/asvilen/Documents/Documents - Svilen’s Mac mini/eshop/product-photos/rosa/4-2.jpg",
+      "sha256": "55624c93337f81fa8120a5ade9203f7d6f6f86ac46c221d346c0cd5d4262f839"
+    },
+    {
+      "file": "4-1.jpg",
+      "role": "closeup",
+      "source": "/Users/asvilen/Documents/Documents - Svilen’s Mac mini/eshop/product-photos/rosa/4-1.jpg",
+      "sha256": "bf665b842ae15871c43fe9bae4d73523535beb498ee6dcf89115a4e66e8c1e2a"
+    }
+  ],
+  "photographedDimensions": {
+    "horizontalCm": 150,
+    "verticalCm": 100,
+    "fabricWidthAxis": "horizontal",
+    "confirmedByUser": true
+  }
+}

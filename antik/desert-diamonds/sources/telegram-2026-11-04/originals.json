@@ -1,0 +1,23 @@
+{
+  "productFolder": "antik/desert-diamonds",
+  "files": [
+    {
+      "file": "photo_1_2026-10-31_16-06-16.jpg",
+      "role": "closeup",
+      "source": "/Users/asvilen/Downloads/Telegram Desktop/photo_1_2026-10-31_16-06-16.jpg",
+      "sha256": "7b91fec83c3eeffbfb4bd13ad6dd0acbd62e5d451565f425afd0594f4a63ff25"
+    },
+    {
+      "file": "photo_2_2026-10-31_16-06-16.jpg",
+      "role": "closeup-alternate",
+      "source": "/Users/asvilen/Downloads/Telegram Desktop/photo_2_2026-10-31_16-06-16.jpg",
+      "sha256": "7f2e162ea4822470c2c7f21931cbc88c153b476d5bd8eb84e203ca28f1361756"
+    },
+    {
+      "file": "photo_3_2026-10-31_16-06-16.jpg",
+      "role": "fullview",
+      "source": "/Users/asvilen/Downloads/Telegram Desktop/photo_3_2026-10-31_16-06-16.jpg",
+      "sha256": "becb3a57da9ada37f30dec25840df48b2c88f66a4ec36ecb66123569e4461886"
+    }
+  ]
+}

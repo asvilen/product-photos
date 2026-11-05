@@ -1,0 +1,23 @@
+{
+  "productFolder": "rosa/magnolia",
+  "files": [
+    {
+      "file": "3-2.jpg",
+      "role": "fullview",
+      "source": "/Users/asvilen/Documents/Documents - Svilen’s Mac mini/eshop/product-photos/rosa/3-2.jpg",
+      "sha256": "f9e720da567f66b68f6a9c286ed3a8bf3a5511c31507d70dbce6ea9a3e9835a3"
+    },
+    {
+      "file": "3-1.jpg",
+      "role": "closeup",
+      "source": "/Users/asvilen/Documents/Documents - Svilen’s Mac mini/eshop/product-photos/rosa/3-1.jpg",
+      "sha256": "98c09664ff73ec7a0cac7d051ac53a5e028175d698bbc4130670143036327e7c"
+    }
+  ],
+  "photographedDimensions": {
+    "horizontalCm": 100,
+    "verticalCm": 150,
+    "fabricWidthAxis": "vertical",
+    "confirmedByUser": true
+  }
+}
