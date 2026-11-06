@@ -1,5 +1,5 @@
 # Product image recipes
-<!-- recipe-version: 15 -->
+<!-- recipe-version: 18 -->
 
 This is the editable master shot list. Sitex PIM reads each `shot-json` block directly. Recipes are captured when a run starts. Generation code lives in `sitex-pim`; this repository contains source photographs, accepted photographs and recipes. The existing `video/` project is outside this workflow.
 
@@ -9,7 +9,7 @@ Upload one full view and one closeup in the product's PIM Media page. Enter the 
 
 Choose Generate all, an image category or individual shots. PIM opens one ordinary Chat conversation per shot in the Eshop project, with Work off, the latest available model and High reasoning. Upload both originals at the start of each shot's conversation. Include the full product facts, photographed dimensions, source-image roles and that shot's recipe in every request. Treat the original photographs as the source of truth for the product; do not use earlier generated images as product references. Request one finished image at a time and wait for its original download before starting the next shot. Review the selected batch when it finishes. Retries, resume and regeneration continue in that shot's own conversation with the user's feedback. Each image links to its own chat; the batch link opens the latest chat. An older run's pending request keeps its saved conversation to prevent duplicate submissions; other shots without a dedicated chat start fresh with both originals. If ChatGPT explicitly reports that earlier originals are unavailable and requests them again, PIM reattaches the saved full view and closeup to the recovery request in that same conversation. One automatic source refresh is allowed per image retry budget; a repeated missing-source error pauses for review.
 
-All shots, including closeups, complete information cards and compliance images with English label text, are generated through ChatGPT. Card wording, typography and layout can vary creatively while retaining the information and visual purpose specified here. Product claims must agree with the supplied PIM facts. For care cards without label instructions, present conservative material-specific advice as general guidance rather than manufacturer-confirmed instructions. Compliance labels contain only supplied product facts; do not invent care symbols, manufacturer addresses, certifications or barcodes, or copy another pattern's label data.
+ChatGPT generates the listing images and can draft compliance layouts. Use actual product photos for Temu compliance submissions, as specified below. Card wording, typography and layout can vary creatively while retaining the information and visual purpose specified here. Product claims must agree with the supplied PIM facts. For care cards without label instructions, present conservative material-specific advice as general guidance rather than manufacturer-confirmed instructions. Compliance labels contain only verified product facts; do not invent care symbols, manufacturer addresses, certifications or barcodes, or copy another pattern's label data.
 
 The originals establish the actual product: preserve its print, colour relationships, motif proportions, textile character and edge construction. Source dimensions establish pattern scale. Use natural regular dining tables and believable drape. Do not specify a numeric drop or prescribe table dimensions. Do not turn printed patchwork into sewn panels.
 
@@ -534,6 +534,12 @@ Keep all drafts, downloads, attempt history, measurements and run metadata outsi
 
 ## Compliance images
 
+For Sitex products made in Bulgaria, every Temu compliance shot must show the manufacturer name `Sitex`, the full address `24, Badema, Хасково, област Хасково, Bulgaria`, and the origin statement `Made in Bulgaria` on the label. Match the Temu submission exactly, including the Cyrillic spelling and commas in the address. Check the actual label against the submission before upload. If the manufacturer, address or origin differs, or any text is missing or illegible, flag the mismatch and withhold the photo.
+
+Use photos of the actual product or retail packaging with the printed label firmly attached. Generated layouts are reference drafts only. If the physical label lacks the matching details, correct the printed label and rephotograph it before submitting.
+
+For Temu, each final compliance PNG (shared packaging, label close-up and every variant package) must be strictly under 3 MB (fewer than 3,000,000 bytes). Check the actual exported file size before accepting or uploading it. If it reaches the limit, optimize the PNG losslessly first, then reduce its dimensions only as needed. Keep it opaque and square, at least 1024 pixels per side, with all label text legible. If the export still fails any of these checks, flag it for review and withhold it from upload.
+
 Follow the established Country Check, Mocha Mosaic, Terracotta Garden and Coffee Lecce compositions below while preserving this product's actual fabric and verified facts. Keep label design consistent across the shared package and variant packages. Text belongs on the photographed label, with no floating captions or infographic layout. Shared images omit variant-specific sizes, SKUs and EANs. A dimension image shared by rectangle and oval omits shape-specific text and any barcode that differs between those SKUs. Never reuse the reference images' barcode or address.
 
 PIM expands the `compliance__variant` template into one shot for each distinct active key; the template itself is never saved as a file. Exact size and shape information is supplied with each expanded shot. Multiple active round or square sizes share their established key, so show all applicable sizes without selecting an arbitrary SKU. Existing runs can add missing recipe images in PIM while keeping their originals, saved conversations and previous attempts. Newly added shots each start their own conversation with both originals.
@@ -552,12 +558,17 @@ PIM expands the `compliance__variant` template into one shot for each distinct a
   "composition": "Front-facing studio product photograph of one neatly folded tablecloth in a clear retail bag, complete package within the frame, neutral background and soft shadow. Show the actual print through the bag. A centered white paper label carries the product name and code, a small faithful in-use product photograph, verified composition, manufacturer and origin in legible English. Keep the label design consistent with the variant package images.",
   "requiredContent": [
     "Entire clear package and actual fabric visible",
-    "Product name, product code and supplied composition, manufacturer and origin",
-    "Shared product label without a variant-specific size, SKU or EAN"
+    "Product name, product code and supplied composition",
+    "The manufacturer field must read exactly Sitex, the display name in the Temu submission, even if the supplied PIM manufacturer is Sitex OOD",
+    "Print the address verbatim on the label: 24, Badema, Хасково, област Хасково, Bulgaria",
+    "Print the origin statement exactly as Made in Bulgaria",
+    "Shared product label without a variant-specific size, SKU or EAN",
+    "Final PNG file strictly under 3 MB (fewer than 3,000,000 bytes)"
   ],
   "reject": [
     "Wrong pattern, colors or edge",
     "Cropped bag, unreadable label or floating infographic text",
+    "Missing, mismatched or digitally added manufacturer details or origin",
     "Invented address, care instructions, certification, barcode or EAN",
     "Copied reference-product identity or label data"
   ]
@@ -575,15 +586,20 @@ PIM expands the `compliance__variant` template into one shot for each distinct a
     "rosa/country-check/ROS-CC__compliance__label.png",
     "pastel/01-coffee-lecce/PAS-CL__compliance__label.png"
   ],
-  "composition": "Tight sharply focused product photograph of a white textile label resting against the actual cloth near its finished edge. Keep enough surrounding print and texture to identify the product. The label clearly shows the exact product code, supplied country of origin, manufacturer and composition in legible English, with clean black typography and realistic textile detail.",
+  "composition": "Tight sharply focused product photograph of the label firmly attached to the actual cloth or retail packaging. Keep enough surrounding print and texture to identify the product. Make the exact product code, composition, manufacturer name, address and country of origin sharply readable.",
   "requiredContent": [
-    "Exact product code and supplied origin, manufacturer and composition",
+    "Exact product code and supplied composition",
+    "The manufacturer field must read exactly Sitex, the display name in the Temu submission, even if the supplied PIM manufacturer is Sitex OOD",
+    "Print the address verbatim on the label: 24, Badema, Хасково, област Хасково, Bulgaria",
+    "Print the origin statement exactly as Made in Bulgaria",
     "Actual fabric, motif and edge visible around the label",
-    "All label text sharply readable"
+    "All label text sharply readable",
+    "Final PNG file strictly under 3 MB (fewer than 3,000,000 bytes)"
   ],
   "reject": [
     "Wrong fabric or invented edge construction",
     "Invented address, care symbols, certification, barcode or EAN",
+    "Missing, mismatched, unreadable or digitally added manufacturer details or origin",
     "Reference-product text, spelling errors or unreadable lettering"
   ]
 }
@@ -606,12 +622,17 @@ PIM expands the `compliance__variant` template into one shot for each distinct a
   "requiredContent": [
     "Exact target size in centimetres; round sizes use diameter notation",
     "Correct product name and code, actual print and consistent package-label design",
-    "Only supplied product facts and target variants"
+    "The manufacturer field must read exactly Sitex, the display name in the Temu submission, even if the supplied PIM manufacturer is Sitex OOD",
+    "Print the address verbatim on the label: 24, Badema, Хасково, област Хасково, Bulgaria",
+    "Print the origin statement exactly as Made in Bulgaria",
+    "Only supplied product facts and target variants",
+    "Final PNG file strictly under 3 MB (fewer than 3,000,000 bytes)"
   ],
   "reject": [
     "Wrong or inactive size or shape",
     "Arbitrary SKU or barcode on an image shared by different variants",
     "Invented address, care symbols, certification, barcode or EAN",
+    "Missing, mismatched, unreadable or digitally added manufacturer details or origin",
     "Different print, unreadable label or cropped package"
   ]
 }
