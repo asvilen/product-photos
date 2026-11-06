@@ -1,5 +1,5 @@
 # Product image recipes
-<!-- recipe-version: 18 -->
+<!-- recipe-version: 19 -->
 
 This is the editable master shot list. Sitex PIM reads each `shot-json` block directly. Recipes are captured when a run starts. Generation code lives in `sitex-pim`; this repository contains source photographs, accepted photographs and recipes. The existing `video/` project is outside this workflow.
 
@@ -534,7 +534,7 @@ Keep all drafts, downloads, attempt history, measurements and run metadata outsi
 
 ## Compliance images
 
-For Sitex products made in Bulgaria, every Temu compliance shot must show the manufacturer name `Sitex`, the full address `24, Badema, Хасково, област Хасково, Bulgaria`, and the origin statement `Made in Bulgaria` on the label. Match the Temu submission exactly, including the Cyrillic spelling and commas in the address. Check the actual label against the submission before upload. If the manufacturer, address or origin differs, or any text is missing or illegible, flag the mismatch and withhold the photo.
+For Sitex products made in Bulgaria, every Temu compliance shot must show the manufacturer name `Sitex` and the origin statement `Made in Bulgaria`. For Fruit Garden (`ROS-FG`), print `24 Badema, Haskovo, Bulgaria` as the address. For all other Sitex products, use `24, Badema, Хасково, област Хасково, Bulgaria`. Check the actual label against the Temu submission before upload. If the manufacturer, address or origin differs, or any text is missing or illegible, flag the mismatch and withhold the photo.
 
 Use photos of the actual product or retail packaging with the printed label firmly attached. Generated layouts are reference drafts only. If the physical label lacks the matching details, correct the printed label and rephotograph it before submitting.
 
@@ -560,7 +560,7 @@ PIM expands the `compliance__variant` template into one shot for each distinct a
     "Entire clear package and actual fabric visible",
     "Product name, product code and supplied composition",
     "The manufacturer field must read exactly Sitex, the display name in the Temu submission, even if the supplied PIM manufacturer is Sitex OOD",
-    "Print the address verbatim on the label: 24, Badema, Хасково, област Хасково, Bulgaria",
+    "For product code ROS-FG, print the address verbatim as 24 Badema, Haskovo, Bulgaria. Use Latin letters and no comma after 24. For other product codes, print 24, Badema, Хасково, област Хасково, Bulgaria. Print only the address for the current product",
     "Print the origin statement exactly as Made in Bulgaria",
     "Shared product label without a variant-specific size, SKU or EAN",
     "Final PNG file strictly under 3 MB (fewer than 3,000,000 bytes)"
@@ -590,7 +590,7 @@ PIM expands the `compliance__variant` template into one shot for each distinct a
   "requiredContent": [
     "Exact product code and supplied composition",
     "The manufacturer field must read exactly Sitex, the display name in the Temu submission, even if the supplied PIM manufacturer is Sitex OOD",
-    "Print the address verbatim on the label: 24, Badema, Хасково, област Хасково, Bulgaria",
+    "For product code ROS-FG, print the address verbatim as 24 Badema, Haskovo, Bulgaria. Use Latin letters and no comma after 24. For other product codes, print 24, Badema, Хасково, област Хасково, Bulgaria. Print only the address for the current product",
     "Print the origin statement exactly as Made in Bulgaria",
     "Actual fabric, motif and edge visible around the label",
     "All label text sharply readable",
@@ -623,7 +623,7 @@ PIM expands the `compliance__variant` template into one shot for each distinct a
     "Exact target size in centimetres; round sizes use diameter notation",
     "Correct product name and code, actual print and consistent package-label design",
     "The manufacturer field must read exactly Sitex, the display name in the Temu submission, even if the supplied PIM manufacturer is Sitex OOD",
-    "Print the address verbatim on the label: 24, Badema, Хасково, област Хасково, Bulgaria",
+    "For product code ROS-FG, print the address verbatim as 24 Badema, Haskovo, Bulgaria. Use Latin letters and no comma after 24. For other product codes, print 24, Badema, Хасково, област Хасково, Bulgaria. Print only the address for the current product",
     "Print the origin statement exactly as Made in Bulgaria",
     "Only supplied product facts and target variants",
     "Final PNG file strictly under 3 MB (fewer than 3,000,000 bytes)"
